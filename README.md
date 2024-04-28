@@ -1,2 +1,2 @@
 # CinemaWins
-Repositório para armazenar o conteúdo referente ao projeto individual 
+O CinemaWins é um projeto dedicado a celebrar o melhor do cinema. Nosso website é um destino único para os amantes da sétima arte, oferecendo uma experiência envolvente e inspiradora para os cinéfilos de todas as idades. Explore uma vasta seleção de conteúdo, desde resenhas de filmes até notícias do mundo cinematográfico, e descubra novas maneiras de se conectar com suas obras favoritas.
