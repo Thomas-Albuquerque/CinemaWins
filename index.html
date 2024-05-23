@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="style/estilo.css" />
     <title>CinemaWins | Página Incial</title>
 </head>
-<body>
-    <div class="inicial">
-        <nav>
+<body onscroll="scrollHeader()">
+    <div id="home" class="inicial">
+        <nav id="nav">
             <ul>
-            <li>Home</li>
-                <li>Lançamentos</li>
-            </ul>
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#lancamento">Lançamentos</a></li>
+                <li><a class="nav-link" href="#cinema">Cinema</a></li>
+             </ul>
             <div class="logo">
                 <img src="img/logoNavbar.svg" alt="Logotipo" >
             </div>
             <ul>
-                <li>Projeto</li>
+                <li><a class="nav-link" href="#projeto">Projeto</a></li>
+                <li><a class="nav-link" href="#contato">Contato</a></li>
                 <li>Sobre Mim</li>
             </ul>
         </nav>
@@ -44,7 +46,7 @@
         </div>
     </div>  
     <div>
-        <div class="lancamentos">
+        <div id="lancamento" class="lancamentos">
             <div class="tituloPrincipal1">
                LANÇAMENTOS
                <div class="img-pipoca">
@@ -155,7 +157,7 @@
   
         </div>
     </div> 
-        <div class="cinema">
+        <div id="cinema" class="cinema">
             <div class="tituloPrincipal2">
                 <img src="img/lampada.svg" alt="">
                 CINEMA NO BRASIL
@@ -216,7 +218,7 @@
                 </div>
             </div>
         </div>
-        <div class="projeto">  
+        <div id="projeto" class="projeto">  
             <div class="img-titulo">           
                     <img src="img/takeleft.svg" alt="">
                     <div class="tituloPrincipal3">
@@ -247,7 +249,7 @@
                     </div>  
                 </div>
         </div>
-        <div class="contato">
+        <div id="contato" class="contato">
             <div class="meowy">
             <div class="tituloPrincipal4">
                CONTATE-NOS
@@ -328,4 +330,25 @@
 function Login() {
             window.location.href = 'login_cadastro.html';
         }
+
+
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
+    function scrollHeader(){
+        nav.classList.toggle('headerblock', scrollY > 0)
+    }
+    
 </script>

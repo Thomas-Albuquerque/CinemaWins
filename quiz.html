@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Filmes</title>
+</head>
+<body>
+    <h1>Quiz sobre Filmes</h1>
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Enviar Respostas</button>
+    <div id="result"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "Qual filme ganhou o Oscar de Melhor Filme em 1994?",
+                options: ["Pulp Fiction", "Forrest Gump", "O Rei Leão", "Um Sonho de Liberdade"],
+                answer: 1,
+                points: 10
+            },
+            {
+                question: "Quem dirigiu 'A Origem'?",
+                options: ["James Cameron", "Christopher Nolan", "Steven Spielberg", "Quentin Tarantino"],
+                answer: 1,
+                points: 10
+            },
+            {
+                question: "Qual é o nome do personagem interpretado por Keanu Reeves na franquia 'Matrix'?",
+                options: ["Neo", "Morpheus", "Agent Smith", "Trinity"],
+                answer: 0,
+                points: 10
+            },
+            {
+                question: "Em que ano foi lançado o primeiro filme de 'Harry Potter'?",
+                options: ["1999", "2000", "2001", "2002"],
+                answer: 2,
+                points: 20
+            }
+        ];
+
+        function createQuiz() {
+            const quizDiv = document.getElementById('quiz');
+            questions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.innerHTML = `<p>${q.question}</p>`;
+                
+                q.options.forEach((option, i) => {
+                    questionDiv.innerHTML += `
+                        <input type="radio" name="question${index}" value="${i}">
+                        <label>${option}</label><br>
+                    `;
+                });
+                
+                quizDiv.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            questions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                if (selectedOption && parseInt(selectedOption.value) === q.answer) {
+                    score += q.points;
+                }
+            });
+            document.getElementById('result').innerText = `Sua pontuação final é: ${score}`;
+        }
+
+        createQuiz();
+    </script>
+</body>
+</html>

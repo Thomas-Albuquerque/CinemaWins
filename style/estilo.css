@@ -14,16 +14,24 @@ body {
 
 /*Incio da tela Home*/
 .inicial {
+    padding-top: 40px;
     position: relative;
     width: 99vw;
     height: 130vh;
     background-size: cover;
     background-image: url(../img/Group\ 20.png);
 }
-
-nav {
+.img-nav{
+    position: absolute;
     width: 100%;
-    padding: 20px;
+}
+
+.headerblock{
+    background-color: #BBB59F;
+}
+nav {   
+    width: 100%;
+    padding: 30px;
     box-sizing: border-box;
     font-size: 18px;
     color: #1E1D19;
@@ -32,6 +40,10 @@ nav {
     justify-content: center;
     gap: 20px;
     align-items: center;
+    position: fixed;
+    z-index: 2;
+    top:0%;
+    transition: background-color 0.5s ease;
 }
 
 .logo {
@@ -39,13 +51,20 @@ nav {
 }
 
 nav ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
+    font-size: 18px;
+    display: flex;
+    padding-inline: 30px;
+    list-style: none; 
+    position: relative;
    
 }
-
+.nav-link {
+    text-decoration: none;
+    color: #1b1411;
+}
 nav ul li {
     margin-right: 60px;
     color:inherit;
