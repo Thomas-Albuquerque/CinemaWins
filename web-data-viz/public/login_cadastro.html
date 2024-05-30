@@ -9,7 +9,7 @@
 <body>
 	<div class="container" id="container">
 		<div class="form-container sign-up-container">
-			
+			<form>
 				<h1>Crie sua conta</h1>		
 				<br>
 				<label style="font-family:Roboto, serif; width: 100%; text-align: left;">Nome:</label>
@@ -22,7 +22,7 @@
 				<input type="password" id="confirmacao_senha_input" placeholder="Confirme sua senha" />
 				<br>
 				<button  onclick="cadastrar()">Cadastre-se</button>
-		
+      </form>
 		</div>
 		<div class="form-container sign-in-container">
 			
@@ -107,7 +107,7 @@ function cadastrar() {
         emailServer: emailVar,
         senhaServer: senhaVar,
         // empresaServer: empr
-        esaVar
+      
       }),
     })
       .then(function (resposta) {
@@ -142,6 +142,7 @@ function cadastrar() {
 
 
   function entrar() {
+        // aguardar();
 
         var emailVar = input_email_login.value;
         var senhaVar = input_senha_login.value;
@@ -153,7 +154,9 @@ function cadastrar() {
             return false;
         }
         else {
-    
+            // setInterval(sumirMensagem, 5000)
+        }
+
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -181,8 +184,8 @@ function cadastrar() {
                     // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-					            	alert("porra aleatoria")
-                        window.location = "./dashboard/cards.html";
+                      window.location = "quiz.html"
+                        // window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -200,7 +203,6 @@ function cadastrar() {
         }).catch(function (erro) {
             console.log(erro);
         })
-	    }
 
         return false;
     }

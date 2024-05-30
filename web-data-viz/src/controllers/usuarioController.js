@@ -5,51 +5,40 @@ function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
+    if (email === undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    } else if (senha === undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
         usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            .then(function (resultadoAutenticar) {
+                console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); 
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                            res.status(200).json(resultadoAutenticar);
-                        // aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].id)
-                        //     .then((resultadoAquarios) => {
-                        //         if (resultadoAquarios.length > 0) {
-                        //             res.json({
-                        //                 id: resultadoAutenticar[0].id,
-                        //                 email: resultadoAutenticar[0].email,
-                        //                 nome: resultadoAutenticar[0].nome,
-                        //                 senha: resultadoAutenticar[0].senha,
-                        //                 aquarios: resultadoAquarios
-                        //             });
-                        //         } else {
-                        //             res.status(204).json({ aquarios: [] });
-                        //         }
-                        //     })
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
+                if (resultadoAutenticar.length === 1) {
+                    console.log(resultadoAutenticar);
+                    var usuario = {
+                        id: resultadoAutenticar[0].id,
+                        email: resultadoAutenticar[0].email,
+                        nome: resultadoAutenticar[0].nome,
+                        senha: resultadoAutenticar[0].senha
+                    };
+
+                    res.status(200).json(usuario);
+                } else if (resultadoAutenticar.length === 0) {
+                    res.status(403).send("Email e/ou senha inválido(s)");
+                } else {
+                    res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                 }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+            }).catch(function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            });
     }
-
 }
+
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -87,12 +76,14 @@ function cadastrar(req, res) {
 
 function quiz(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var idResposta = req.body.respostaIdServer;
+    calcularPontuacaoMaxima(idResposta);
     var usuario = req.body.usuarioIdServer;
     var quiz = req.body.idQuizServer;
     var pontuacao = req.body.pontuacaoServer;
 
     // Faça as validações dos valores
-    if (usuario == undefined) {
+    if (usuario || idResposta == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (quiz == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -101,7 +92,7 @@ function quiz(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.quiz(usuario, quiz, pontuacao)
+        usuarioModel.quiz(idResposta, usuario, quiz, pontuacao)
             .then(
                 function (resultado) {
                     res.json(resultado);
