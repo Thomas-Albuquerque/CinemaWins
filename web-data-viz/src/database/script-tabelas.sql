@@ -1,48 +1,37 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+CREATE DATABASE CinemaWins;
 
-/*
-comandos para mysql server
-*/
+USE CinemaWins;
 
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+CREATE TABLE usuario(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(80),
+email VARCHAR(256),
+senha CHAR(8)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+CREATE TABLE quiz(
+idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+nome varchar(45)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300)
+CREATE TABLE resposta(
+idResposta INT auto_increment,
+fkUsuario INT,
+fkQuiz INT,
+CONSTRAINT fkUsuarioResposta FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
+CONSTRAINT fkQuizResposta FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
+PRIMARY KEY (idResposta, fkUsuario, fkQuiz),
+pontuacao INT
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+SELECT * FROM usuario;
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
+SELECT * FROM quiz;
 
-insert into aquario (descricao) values ('Aquário de Estrela-do-mar');
+SELECT * FROM resposta;
+
+INSERT INTO quiz VALUES 
+(1, 'Conhecimentos Gerais');
+
+
+SELECT * FROM usuario JOIN resposta ON fkUsuario = id;
