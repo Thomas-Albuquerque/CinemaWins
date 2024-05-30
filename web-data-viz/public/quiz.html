@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinemaWins | Quiz</title>
+    <link rel="stylesheet" href="style/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .opcao {
+            cursor: pointer;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+        }
+
+        .correta {
+            background-color: rgb(48, 97, 48);
+        }
+
+        .errada {
+            background-color: rgb(124, 12, 12);
+        }
+    </style>
+</head>
+
+<body style="background-image: url(./img/bg_movie.png);">
+    <div class="quiz-container">
+        <p id="numero-questao">QUESTÃO 01/20</p><br>
+        <p id="texto-questao" style="font-size: 20px;"></p>
+        <div class="opcoes-container">
+            <div class="opcao" id="opcao-A" onclick="selecionarResposta('A')">
+                <div class="abc" id="abc-A">A</div>
+                <p class="texto-opcao" id="texto-opcao-A"></p>
+            </div>
+            <div class="opcao" id="opcao-B" onclick="selecionarResposta('B')">
+                <div class="abc" id="abc-B">B</div>
+                <p class="texto-opcao" id="texto-opcao-B"></p>
+            </div>
+            <div class="opcao" id="opcao-C" onclick="selecionarResposta('C')">
+                <div class="abc" id="abc-C">C</div>
+                <p class="texto-opcao" id="texto-opcao-C"></p>
+            </div>
+            <div class="opcao" id="opcao-D" onclick="selecionarResposta('D')">
+                <div class="abc" id="abc-D">D</div>
+                <p class="texto-opcao" id="texto-opcao-D"></p>
+            </div>
+        </div>
+    </div>
+    <div class="pontuacao-card" id="pontuacao-card" style="display: none;">
+        <h2>Quiz completo!</h2>
+        <p>Você marcou <span class="pontuacao" id="pontuacao">0</span> pontos de um total de <span
+                id="pontuacao-maxima">0</span> pontos.</p>
+    </div>
+    <script>
+        const perguntas = [
+            {
+                "pergunta": "Qual filme ganhou o Oscar de Melhor Filme em 1994?",
+                "opcoes": ["Forrest Gump", "Pulp Fiction", "The Shawshank Redemption", "Quiz Show"],
+                "resposta": "A",
+                "pontuacao": 5
+            },
+            {
+                "pergunta": "Quem dirigiu o filme 'A Origem' (Inception)?",
+                "opcoes": ["Steven Spielberg", "Quentin Tarantino", "Christopher Nolan", "James Cameron"],
+                "resposta": "C",
+                "pontuacao": 5
+            },
+            {
+                "pergunta": "Qual é o nome do hobbit interpretado por Elijah Wood na trilogia 'O Senhor dos Anéis'?",
+                "opcoes": ["Frodo Baggins", "Samwise Gamgee", "Bilbo Baggins", "Merry Brandybuck"],
+                "resposta": "A",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Em que filme de 1999, Keanu Reeves interpreta um hacker chamado Neo?",
+                "opcoes": ["Johnny Mnemonic", "O Substituto", "Matrix", "Velocidade Máxima"],
+                "resposta": "C",
+                "pontuacao": 5
+            },
+            {
+                "pergunta": "Qual atriz interpretou Katniss Everdeen na série de filmes 'Jogos Vorazes'?",
+                "opcoes": ["Emma Stone", "Jennifer Lawrence", "Kristen Stewart", "Scarlett Johansson"],
+                "resposta": "B",
+                "pontuacao": 5
+            },
+            {
+                "pergunta": "Filme estrelado por Winona Ryder, Angelina Jolie, Brittany Murphy e Whoopi Goldberg, Dirigido por Jason Mangold.",
+                "opcoes": ["A volta de Roxy Carmichael", "Garota Interrompida", "O preço da coragem", "A época da inocência"],
+                "resposta": "B",
+                "pontuacao": 10
+            }
+        ];
+
+        let perguntaAtual = 0;
+        let pontuacao = 0;
+
+        function selecionarResposta(resposta) {
+            const opcaoSelecionada = document.getElementById(`abc-${resposta}`);
+            const perguntaAtualObj = perguntas[perguntaAtual];
+            if (resposta == perguntaAtualObj.resposta) {
+                opcaoSelecionada.style.backgroundColor = 'rgb(48, 97, 48)';
+                pontuacao += perguntaAtualObj.pontuacao;
+            } else {
+                opcaoSelecionada.style.backgroundColor = 'rgb(124, 12, 12)';
+            }
+
+            setTimeout(() => {
+                perguntaAtual++;
+                if (perguntaAtual < perguntas.length) {
+                    limparClasses();
+                    carregarPergunta();
+                } else {
+                    calcularPontuacaoMaxima();
+                }
+            }, 1000);
+        }
+
+        function limparClasses() {
+            const opcoesElementos = ['A', 'B', 'C', 'D'];
+            for (let posicao = 0; posicao < opcoesElementos.length; posicao++) {
+                const opcao = opcoesElementos[posicao];
+                document.getElementById(`abc-${opcao}`).style.backgroundColor = '';
+            }
+        }
+
+        function carregarPergunta() {
+            const pergunta = perguntas[perguntaAtual];
+            document.getElementById('numero-questao').innerText = `QUESTÃO ${perguntaAtual + 1}/${perguntas.length}`;
+            document.getElementById('texto-questao').innerText = pergunta.pergunta;
+
+            const opcoesElementos = ['A', 'B', 'C', 'D'];
+            for (let posicao = 0; posicao < opcoesElementos.length; posicao++) {
+                const opcao = opcoesElementos[posicao];
+                document.getElementById(`texto-opcao-${opcao}`).innerText = pergunta.opcoes[posicao];
+            }
+        }
+
+        function calcularPontuacaoMaxima() {
+            Swal.fire({
+                title: "Sua pontuação final é de:",
+                text: `${pontuacao}`,
+                icon: "success"
+            });
+            var usuarioIdVar = sessionStorage.ID_USUARIO;
+            fetch("/usuarios/quiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    usuarioIdServer: usuarioIdVar,
+                    idQuizServer: 1,
+                    pontuacaoServer: pontuacao,
+                    // empresaServer: empresaVar
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                    //     cardErro.style.display = "block";
+
+                    //     mensagem_erro.innerHTML =
+                    //         "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                    //     setTimeout(() => {
+                    //         window.location = "login.html";
+                    //     }, "2000");
+
+                    //     limparFormulario();
+                    //     finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao responder!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    finalizarAguardar();
+                });
+        }
+
+        window.onload = function () {
+            carregarPergunta();
+        }
+
+    </script>
+
+</body>
+
+</html>

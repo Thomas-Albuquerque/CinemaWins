@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/login.css" />
+    <title>CinemaWins | Login & Cadastro</title>
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			
+				<h1>Crie sua conta</h1>		
+				<br>
+				<label style="font-family:Roboto, serif; width: 100%; text-align: left;">Nome:</label>
+				<input type="text" id="nome_input" placeholder="Nome" />
+				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">E-mail:</label>
+				<input type="email"  id="email_input" placeholder="Email" />
+				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">Senha:</label>
+				<input type="password" id="senha_input" placeholder="Senha" />
+				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">Confirme sua senha:</label>
+				<input type="password" id="confirmacao_senha_input" placeholder="Confirme sua senha" />
+				<br>
+				<button  onclick="cadastrar()">Cadastre-se</button>
+		
+		</div>
+		<div class="form-container sign-in-container">
+			
+				<h1>Faça login</h1>
+				<br>
+				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">E-mail:</label>
+				<input id="input_email_login" type="email" placeholder="Email" />
+				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">Senha:</label>
+				<input  id="input_senha_login" type="password" placeholder="Senha" />
+				<a href="#"><b style="font-family: 'Roboto', sans-serif;">Esqueceu sua senha?</b></a>
+				<button onclick="entrar()">Entrar</button>
+			
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Bem vindo de volta, cinéfilo!</h1>
+					<p>Entre em cena para descobrir sua posição no ranking!</p>
+					<button class="ghost" id="signIn">Login</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Olá,Cinéfilo!</h1>
+					<p>Faça parte do elenco dos classificados! Teste seus conhecimentos sobre filmes e seja a estrela do ranking.</p>
+					<button class="ghost" id="signUp">Cadastre-se</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+<script>
+    const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+
+function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    // var empresaVar = listaEmpresas.value
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" 
+      // empresaVar == ""
+    ) {
+    //   cardErro.style.display = "block";
+    //   mensagem_erro.innerHTML =
+    //     "(Mensagem de erro para todos os campos em branco)";
+
+    //   finalizarAguardar();
+      return false;
+	  
+    } 
+	// else {
+    //   setInterval(sumirMensagem, 5000);
+    // }
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        // empresaServer: empr
+        esaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+        //   cardErro.style.display = "block";
+
+        //   mensagem_erro.innerHTML =
+        //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+        //   limparFormulario();
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+
+    return false;
+  }
+
+
+
+
+
+  function entrar() {
+
+        var emailVar = input_email_login.value;
+        var senhaVar = input_senha_login.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // finalizarAguardar();
+            return false;
+        }
+        else {
+    
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+					            	alert("porra aleatoria")
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+	    }
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

@@ -1,0 +1,255 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100%;
+  background: #e3f2fd;
+  overflow-x: hidden;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 24px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #4070f4;
+}
+.nav-link .icon {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+.container-metricas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 7%;
+    gap: 20px;
+}
+
+.metricas{
+  width: 270px;
+  height: 58px;
+  background-color: #707070;
+  border-radius: 20px;
+  justify-content:flex-start;
+  text-align: left;
+  display: flex;
+  align-items:flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.metricas p{
+  margin-left: 18px;
+  margin-top: 2px;
+  font-size: 15px;
+}
+
+
+
+.incial{
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-cardUser{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   margin-left: 7%;
+   margin-top: 30.5px;
+   flex-direction: row;
+   gap:28px
+}
+
+.cardUser{
+    width: 416px;
+    height: 209px;
+    background-color: #333;
+    border-radius: 20px;
+    justify-content:flex-start;
+    text-align: left;
+    display: flex;
+    align-items:flex-start;
+    flex-direction: column;
+}
+
+.cardUser p{
+  font-size: 15px;
+  color: #A0AEC0;
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.metricasUser{
+    width: 280px;
+    height: 275px;
+    background-color: #333;
+    border-radius: 20px;
+    justify-content:flex-start;
+    text-align: left;
+    display: flex;
+    align-items:flex-start;
+    flex-direction: column;
+    column-gap: -8px;
+
+}
+.metricasUser p{
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-left: 20px;
+  margin-top: 12px;
+}
+
+.metricasUser span{
+  font-size: 18px;
+  color: #FFFFFF;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.total-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 130px;
+}
+.total-user{
+  width: 254px;
+  height: 71px;
+  background-color: #060B28;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-user span{
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+.dashboardTop3{
+    width: 400px;
+    height: 272px;
+    background-color: #333;
+    border-radius: 20px;
+}
+
+.container-ranking{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 7%;
+  flex-direction: row;
+  gap:28px;
+  margin-bottom: 41%;
+}
+
+.ranking{
+  width: 421px;
+  height: 366px;
+  background-color: #333;
+  border-radius: 20px;
+}
+
+.jogos{
+  width: 708px;
+  height: 287px;
+  background-color: #333;
+  border-radius: 20px;
+  margin-top: 6.5%;
+}
+
+.container-ranking{
+  
+}
