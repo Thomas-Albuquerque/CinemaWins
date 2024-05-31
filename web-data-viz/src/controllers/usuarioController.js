@@ -76,14 +76,12 @@ function cadastrar(req, res) {
 
 function quiz(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idResposta = req.body.respostaIdServer;
-    calcularPontuacaoMaxima(idResposta);
     var usuario = req.body.usuarioIdServer;
     var quiz = req.body.idQuizServer;
     var pontuacao = req.body.pontuacaoServer;
 
     // Faça as validações dos valores
-    if (usuario || idResposta == undefined) {
+    if (usuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (quiz == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -92,7 +90,7 @@ function quiz(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.quiz(idResposta, usuario, quiz, pontuacao)
+        usuarioModel.quiz(usuario, quiz, pontuacao)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -110,8 +108,133 @@ function quiz(req, res) {
     }
 }
 
+function vezesJogadas(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está undefined!");
+    } else {
+        usuarioModel.vezesJogadas(usuarioId)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ total_jogadas: resultado[0].total_jogadas });
+                } else {
+                    res.status(404).send("Nenhum dado encontrado.");
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao obter o total de jogadas! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
+function obterMaiorPontuacao(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está undefined!");
+    } else {
+        usuarioModel.obterMaiorPontuacao(usuarioId)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ maior_pontuacao: resultado[0].maior_pontuacao });
+                } else {
+                    res.status(404).send("Nenhum dado encontrado.");
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao obter a maior pontuação! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function obterMenorPontuacao(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está undefined!");
+    } else {
+        usuarioModel.obterMenorPontuacao(usuarioId)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.json({ menor_pontuacao: resultado[0].menor_pontuacao });
+                } else {
+                    res.status(404).send("Nenhum dado encontrado.");
+                }
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao obter a menor pontuação! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function obterTotalPontuacao(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+    } else {
+        usuarioModel.obterTotalPontuacao(usuarioId)
+            .then(function(resultado) {
+                if (resultado.length > 0) {
+                    res.json({ total_pontuacao: resultado[0].total_pontuacao });
+                } else {
+                    res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
+                }
+            })
+            .catch(function(erro) {
+                console.error("Erro ao obter o total de pontuação:", erro);
+                res.status(500).json(erro);
+            });
+    }
+}
+
+function obterTresMaioresPontuacoes(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+        return;
+    }
+    usuarioModel.obterTresMaioresPontuacoes(usuarioId)
+        .then(function(resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
+            }
+        })
+        .catch(function(erro) {
+            console.error("Erro ao obter as três maiores pontuações:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
-    quiz
+    quiz,
+    vezesJogadas,
+    obterMaiorPontuacao,
+    obterMenorPontuacao,
+    obterTotalPontuacao,
+    obterTresMaioresPontuacoes
 }

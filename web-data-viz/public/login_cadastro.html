@@ -25,7 +25,7 @@
       </form>
 		</div>
 		<div class="form-container sign-in-container">
-			
+			<form onsubmit="event.preventDefault(); entrar()">
 				<h1>Faça login</h1>
 				<br>
 				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">E-mail:</label>
@@ -33,8 +33,8 @@
 				<label style="font-family:Roboto, serif;width: 100%; text-align: left;">Senha:</label>
 				<input  id="input_senha_login" type="password" placeholder="Senha" />
 				<a href="#"><b style="font-family: 'Roboto', sans-serif;">Esqueceu sua senha?</b></a>
-				<button onclick="entrar()">Entrar</button>
-			
+				<button type="submit">Entrar</button>
+			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
@@ -184,7 +184,7 @@ function cadastrar() {
                     // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                      window.location = "quiz.html"
+                      window.location = "./DashboardMine/testeDashboard.html"
                         // window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 

@@ -1,82 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Página Inicial</title>
-
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style/estilo.css" />
+    <title>CinemaWins | Página Incial</title>
 </head>
+<body onscroll="scrollHeader()">
+    <div id="home" class="inicial">
+        <nav id="nav">
+            <ul>
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#lancamento">Lançamentos</a></li>
+                <li><a class="nav-link" href="#cinema">Cinema...</a></li>
+             </ul>
 
-<body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="login_cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+            <div class="logo">
+                <img src="img/logoNavbar.svg" alt="Logotipo" >
+            </div>
+            <ul>
+                <li><a class="nav-link" href="#projeto">Projeto</a></li>
+                <li><a class="nav-link" href="#contato">Contato</a></li>
+                <li>Sobre Mim</li>
+            </ul>
+        </nav>
+        <div class="tituloPrincipal">
+            MEOW ME MEOWY<br>
+            MEOWR MAEOWY MEOW
         </div>
+        <div class="subtitulo">
+            Meow meow meowmeowmeomwoe meowmeomwmeow <br>
+            meow meowy meowe meoweu meowy meowy mwoeu meow<br>
+            meow meow meow meomwemwomeomweomwoemwm
+        </div>
+        <div class="botoes">
+            <div class="botao-cadastro" onclick="Login()" style="margin-right: 20px;">
+                Cadastre-se
+            </div>
+            <div class="botao-cadastro" onclick="Login()" style="margin-left: 20px;">
+                Login
+            </div>
+        </div>
+        <div class="estrela">
+            <img src="img/Group 12.svg" alt="Cinco estrelas" >
+        </div>
+    </div>  
+    <div>
+        <div id="lancamento" class="lancamentos">
+            <div class="tituloPrincipal1">
+               LANÇAMENTOS
+               <div class="img-pipoca">
+                <img src="img/pipoca.svg" alt="balde de pipoca">
+            </div>
+            <div class="img-pipoca2">
+                <img src="img/pipoca2.svg" alt="balde de pipoca">
+            </div>
+            </div>
+            <div class="subtitulo1">
+                Encontre aqui os filmes mais agurdados de 2024  je meomwmeow<br>
+                meomeowmeowmoemwoemowmeom
+            </div>
+           <!-- Swiper -->
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="img/1.jpg" alt="">
       </div>
+      <div class="swiper-slide">
+        <img src="img/2.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/6.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/7.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/8.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/3.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/4.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/5.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/6.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/7.jpg" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="img/8.jpg" alt="">
+      </div>
+      </div>
+
+      <!-- 15 div -->
+    
     </div>
+  </div>
+    
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 15,
+        stretch: 0,
+        depth: 250,
+        modifier: 1,
+        slideShadows: true,
+      },
+      loop: true,
+      allowTouchMove: false
+    });
   
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-  </body>
+    var cards = document.querySelectorAll('.swiper-slide');
+    cards.forEach(function(card, index) {
+      card.addEventListener('click', function() {
+        
+        document.querySelectorAll('.swiper-slide').forEach(function (slide) {
+          slide.classList.remove('selected');
+        });
+      
+        this.classList.add('selected');
+        swiper.slideNext(); 
+      });
+    });
+  </script>
+  
+        </div>
+    </div> 
+        <div id="cinema" class="cinema">
+            <div class="tituloPrincipal2">
+                <img src="img/lampada.svg" alt="">
+                CINEMA NO BRASIL
+                <img src="img/lampada.svg" alt="">
+             </div>
+             <div class="subtitulo">
+                Encontre aqui os filmes mais agurdados de 2024  je meomwmeow<br>
+                meomeowmeowmoemwoemowmeom
+            </div>
+            <div class="cinema-cards">
+                <div class="cinema-card">
+                    <div class="img-filmroll">
+                        <img src="img/filmeroll.svg" alt="balde de pipoca">
+                    </div>
+                    <div class="titulo-card">
+                                <p>O QUE SÃO?</p>
+                    </div>
+                    <div class="texto-card">
+                        <p>Encontre aqui os filmes mais <br> agurdados de 2024 je <br>meomwmeow<br>
+                            meomeowmeowmoemwoemowmeom</p>
+                    </div>
+                </div>
+                <div class="img-megafone">
+                    <img src="img/megafone2.svg" alt="balde de pipoca">
+                </div>
+                <div class="img-megafone2">
+                    <img src="img/megafone1.svg" alt="balde de pipoca">
+                </div>
+                <div class="cinema-card">   
+                    <div class="img-filmroll">
+                        <img src="img/filmeroll.svg" alt="balde de pipoca">
+                    </div>
+                    <div class="titulo-card">
+                        <p>O QUE SÃO?</p>
+                    </div>
+                    <div class="texto-card">
+                        <p>Encontre aqui os filmes mais <br> agurdados de 2024 je <br>meomwmeow<br>
+                            meomeowmeowmoemwoemowmeom</p>
+                    </div>
+                </div>    
+            </div>
+            <div class="ranking-container">
+                <div class="ranking">
+                    <div class="titulo-ranking">
+                        <p>Meowy</p>
+                        <span>13.000</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="titulo-ranking">
+                        <p>Meowy</p>
+                        <span>13.000</span>
+                    </div>
+                    <div class="line"></div>
+                    <div class="titulo-ranking">
+                        <p>Meowy</p>
+                        <span>13.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="projeto" class="projeto">  
+            <div class="img-titulo">           
+                    <img src="img/takeleft.svg" alt="">
+                    <div class="tituloPrincipal3">
+                        SOBRE O PROJETO
+                    </div>
+                    <img src="img/takeright.svg" alt="">
+                </div> 
+                <div class="content">
+                    <div class="icones">
+                        <div class="icon1"></div>
+                        <p class="icon-text" >Cinema Gratuito</p>
+                        <p class="icon-text4">meomeowmeowmo<br>emwoemowmeom</p>
+                    </div>
+                    <div class="icones">
+                        <div class="icon1"></div>
+                        <p class="icon-text1">Tema foda cativante</p>
+                        <p class="icon-text5">meomeowmeowmo<br>emwoemowmeom</p>
+                    </div>
+                    <div class="icones">
+                        <div class="icon1"></div>
+                        <p class="icon-text2">Tema foda cativante</p>
+                        <p class="icon-text6">meomeowmeowmo<br>emwoemowmeom</p>
+                    </div>
+                </div>
+                <div class="botao-projeto">
+                    <div class="botao">
+                        Cadastre-se
+                    </div>  
+                </div>
+        </div>
+        <div id="contato" class="contato">
+            <div class="meowy">
+            <div class="tituloPrincipal4">
+               CONTATE-NOS
+            </div>
+            <div class="subtitulo-contato">
+                I was the wrong damn girl in the wrong damn<br>  room, i broke my glass balloon i let it go from my 
+            </div>
+            <div class="input-container">
+                <label for="nome"  class="label-nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Nome">
+                <label for="nome"  class="label-nome">E-mail</label>
+                <input type="text" id="nome" name="nome" placeholder="E-mail">
+                <label for="mensagem" class="label-nome">Mensagem</label>
+                <input type="text" id="mensagem" name="mensagem" placeholder="Mensagem" >
+            </div>
+            <div class="botao-projeto1">
+                <div class="botao1">
+                    Enviar
+                </div>  
+            </div>
+        </div>
+        </div>
+
+        <footer>
+            <div class="rodape_esquerda">
+                <img src="img/logofooter.svg" alt="" class="footer_logo">
+    
+                <span class="texto_footer">
+                    Gostou do conteúdo?
+                    Siga nossas redes socias para saber mais:
+                </span>
+    
+                <div class="icones1">
+                    <img src="img/icons8-instagram 1.svg" alt="">
+                    <img src="img/icons8-facebook 1.svg" alt="">
+                    <img src="img/icons8-twitter 1.svg" alt="">
+                    <img src="img/icons8-pinterest 1.svg" alt="">
+                </div>
+    
+    
+            </div>
+            <div class="rodape_direita">
+                <div class="footer_textos">
+                    <div class="footer_navegacao">
+                        <h1>Navegação</h1>
+                        <ul>
+                            <li><a class="nav-link" href="#home">Home</a></li>
+                            <li><a class="nav-link" href="#lancamento">Lançamentos</a></li>
+                            <li><a class="nav-link" href="#cinema">Cinema</a></li>
+                            <li><a class="nav-link" href="#projeto">Projeto</a></li>
+                            <li><a class="nav-link" href="#contato">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer_conta">
+                        <h1>Conta</h1>
+                        <ul>
+                            <li>Login</li>
+                            <li>Cadastro</li>
+                        </ul>
+    
+                    </div>
+                    <div class="footer_sobre">
+                        <h1>Sobre</h1>
+                        <ul>
+                            <li><a class="nav-link" href="#sobre_nos">Sobre Mim</a></li>
+    
+                        </ul>
+                    </div>
+                </div>
+                <span class="direitos_autorais">© 2024 CinemaWins. Todos os direitos reservados </span>
+            </div>
+            </div>
+        </footer>
+</body>
 
 </html>
+<script>
+function Login() {
+            window.location.href = 'login_cadastro.html';
+        }
+
+
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
+    function scrollHeader(){
+        nav.classList.toggle('headerblock', scrollY > 0)
+    }
+    
+</script>

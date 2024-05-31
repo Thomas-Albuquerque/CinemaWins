@@ -1,181 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CinemaWins | Dashboard</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Boxicons CSS -->
-    <link
-    href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-    rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CinemaWins | Dashboard</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <script src="../js/sessao.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <i class="bx bx-menu menu-icon"></i>
+      <span class="logo-name">CinemaWins</span>
+    </div>
+    <div class="sidebar">
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-name">CinemaWins</span>
       </div>
-      <div class="sidebar">
-        <div class="logo">
-          <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-name">CinemaWins</span>
+
+      <div class="sidebar-content">
+        <ul class="lists">
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-home-alt icon"></i>
+              <span class="link">Dashboard</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-bar-chart-alt-2 icon"></i>
+              <span class="link">Revenue</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-bell icon"></i>
+              <span class="link">Notifications</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-message-rounded icon"></i>
+              <span class="link">Messages</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-pie-chart-alt-2 icon"></i>
+              <span class="link">Analytics</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-heart icon"></i>
+              <span class="link">Likes</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-folder-open icon"></i>
+              <span class="link">Files</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="bottom-cotent">
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-cog icon"></i>
+              <span class="link">Settings</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="#" class="nav-link">
+              <i class="bx bx-log-out icon"></i>
+              <span class="link">Logout</span>
+            </a>
+          </li>
         </div>
-        
-        <div class="sidebar-content">
-          <ul class="lists">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-home-alt icon"></i>
-                <span class="link">Dashboard</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-bar-chart-alt-2 icon"></i>
-                <span class="link">Revenue</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-bell icon"></i>
-                <span class="link">Notifications</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-message-rounded icon"></i>
-                <span class="link">Messages</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-pie-chart-alt-2 icon"></i>
-                <span class="link">Analytics</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-heart icon"></i>
-                <span class="link">Likes</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-folder-open icon"></i>
-                <span class="link">Files</span>
-              </a>
-            </li>
-          </ul>
-          
-          <div class="bottom-cotent">
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-cog icon"></i>
-                <span class="link">Settings</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-log-out icon"></i>
-                <span class="link">Logout</span>
-              </a>
-            </li>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <section class="overlay"></section>
-    <div class="incial">
-      <div class="container-metricas">
-        <div class="metricas">
-          <p>Total de vezes jogadas</p>
-          <p style="font-size:19px; color: #fff; font-weight: 800;">30</p>
-        </div>
-        <div class="metricas">
-          <p>Maior pontuação</p>
-          <p style="font-size:19px; color: #fff; font-weight: 800;">2,300</p>
-        </div>
-        <div class="metricas">
-          <p>Menor pontuação</p>
-          <p style="font-size:19px; color: #fff; font-weight: 800;">1,000</p>
-        </div>
-        <div class="metricas">
-          <p>Posição no ranking</p>
-          <p style="font-size:19px; color: #fff; font-weight: 800;">32º</p>
-        </div>
-      </div>
-      <div class="container-cardUser">
-        <div class="cardUser">
-          <p>Bem vindo(a) de volta,</p>
-          <p style="font-size: 28px; color: #FFFFFF; font-weight: 900;">Thomas</p>
-          <p>Prepare-se<br> para alcançar<br> o TOP 1!</p>
-        </div>
-        <div class="metricasUser">
-          <p>Cinéfilos cadastrados</p>
-          <span style="font-size: 15px; color: #A0AEC0; font-weight: 200;">no projeto</span>
-          <div class="total-container">
-            <div class="total-user">
-              <span>98</span>
-            </div>
-          </div>
-        </div>
-        <div class="dashboardTop3">
-          <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw; margin-top: 8%;"></canvas>
-        </div>
-      </div>
-      <div class="container-ranking">
-        <div class="ranking">
-          <p>Cinéfilos cadastrados</p>
-        </div>
-        <div class="jogos"></div>
       </div>
     </div>
-    
-    <script>
-      const labels= ['Janeiro', 'Fevereiro', 'Março'];
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Temperatura Média',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(255, 159, 64, 0.2)',
-                  'rgba(255, 205, 86, 0.2)'
-                ],
-                borderColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(255, 159, 64)',
-                  'rgb(255, 205, 86)'
-                ],
-                borderWidth: 1
-                
-            }]
-        };
-        
-        const config = {
-          type: 'bar',
-          data: data,
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          },
-        };
+  </nav>
+  <section class="overlay"></section>
+  <div class="incial">
+    <div class="container-metricas">
+      <div class="metricas">
+        <p>Total de vezes jogadas</p>
+        <p id="total-jogadas" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+      </div>
+      <div class="metricas">
+        <p>Maior pontuação</p>
+        <p id="maior-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+      </div>
+      <div class="metricas">
+        <p>Menor pontuação</p>
+        <p id="menor-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+      </div>
+      <div class="metricas">
+        <p>Pontuação Total</p>
+        <p id="total-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+      </div>
+    </div>
+    <div class="container-cardUser">
+      <div class="cardUser">
+        <p>Bem vindo(a) de volta,</p>
+        <p style="font-size: 28px; color: #FFFFFF; font-weight: 900;"><span id="b_usuario"></span></p>
+        <p>Prepare-se<br> para alcançar<br> o TOP 1!</p>
+      </div>
+      <div class="metricasUser">
+        <p>Cinéfilos cadastrados</p>
+        <span style="font-size: 15px; color: #A0AEC0; font-weight: 200;">no projeto</span>
+        <div class="total-container">
+          <div class="total-user">
+            <span>98</span>
+          </div>
+        </div>
+      </div>
+      <div class="dashboardTop3">
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw; margin-top: 8%;"></canvas>
+      </div>
+    </div>
+    <div class="container-ranking">
+      <div class="ranking">
+        <p>Cinéfilos cadastrados</p>
+      </div>
+      <div class="jogos"></div>
+    </div>
+  </div>
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
-        </script>
-    
-    <script src="script.js"></script>
-  </body>
+  <script>
+    const labels = [];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Pontuação',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)'
+        ],
+        borderWidth: 1
+
+      }]
+    };
+
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      },
+    };
+
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+
+
+    function vezesJogadas() {
+
+      console.log("ID do usuário enviado para obterTotalJogadas:", sessionStorage.getItem('ID_USUARIO'));
+
+      fetch(`/usuarios/vezesJogadas?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function (resposta) {
+          if (!resposta.ok) {
+            throw new Error("Erro ao obter o total de jogadas.");
+          }
+          return resposta.json();
+        })
+        .then(function (data) {
+          console.log("Total de vezes jogadas: ", data.total_jogadas);
+          document.getElementById("total-jogadas").innerText = data.total_jogadas;
+        })
+        .catch(function (erro) {
+          console.error("Erro ao obter o total de jogadas: ", erro);
+        });
+    }
+
+
+    function obterMaiorPontuacao() {
+      fetch(`/usuarios/maiorPontuacao?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function (resposta) {
+          if (!resposta.ok) {
+            throw new Error("Erro ao obter a maior pontuação.");
+          }
+          return resposta.json();
+        })
+        .then(function (data) {
+          console.log("Maior pontuação: ", data.maior_pontuacao);
+          document.getElementById("maior-pontuacao").innerText = data.maior_pontuacao;
+        })
+        .catch(function (erro) {
+          console.error("Erro ao obter a maior pontuação: ", erro);
+        });
+    }
+
+
+    function obterMenorPontuacao() {
+    fetch(`/usuarios/menorPontuacao?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (!resposta.ok) {
+            throw new Error("Erro ao obter a menor pontuação.");
+        }
+        return resposta.json();
+    })
+    .then(function (data) {
+        console.log("Menor pontuação: ", data.menor_pontuacao);
+        document.getElementById("menor-pontuacao").innerText = data.menor_pontuacao;
+    })
+    .catch(function (erro) {
+        console.error("Erro ao obter a menor pontuação: ", erro);
+    });
+}
+
+function obterTotalPontuacao() {
+    fetch(`/usuarios/totalPontuacao?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (!resposta.ok) {
+            throw new Error("Erro ao obter a total de pontuação.");
+        }
+        return resposta.json();
+    })
+    .then(function (data) {
+        console.log("Total de pontuação: ", data.total_pontuacao);
+        document.getElementById("total-pontuacao").innerText = data.total_pontuacao;
+    })
+    .catch(function (erro) {
+        console.error("Erro ao obter a total de pontuação: ", erro);
+    });
+}
+
+function obterTotalPontuacao() {
+    fetch(`/usuarios/totalPontuacao?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (!resposta.ok) {
+            throw new Error("Erro ao obter o total de pontuação.");
+        }
+        return resposta.json();
+    })
+    .then(function (data) {
+        console.log("Total de pontuação: ", data.total_pontuacao);
+        document.getElementById("total-pontuacao").innerText = data.total_pontuacao;
+    })
+    .catch(function (erro) {
+        console.error("Erro ao obter o total de pontuação: ", erro);
+    });
+}
+
+function obterTresMaioresPontuacoes() {
+    fetch(`/usuarios/obterTresMaioresPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) {
+        if (!resposta.ok) {
+            throw new Error("Erro ao obter as três maiores pontuações.");
+        }
+        return resposta.json();
+    })
+    .then(function (data) {
+        console.log("Três maiores pontuações: ", data);
+
+        const nomes = data.map(pontuacao => pontuacao.nome);
+        const pontuacoes = data.map(pontuacao => parseInt(pontuacao.total_pontuacao));
+
+        myChart.data.labels = nomes;
+        myChart.data.datasets[0].data = pontuacoes;
+
+        myChart.update();
+    })
+    .catch(function (erro) {
+        console.error("Erro ao obter as três maiores pontuações: ", erro);
+    });
+}
+
+
+
+window.onload = function() {
+    validarSessao(); 
+    vezesJogadas();
+    obterMaiorPontuacao();
+    obterMenorPontuacao();
+    obterTotalPontuacao();
+    obterTotalPontuacao();
+    obterTresMaioresPontuacoes();
+};
+
+
+  </script>
+
+
+
+  </script>
+  <script src="script.js"></script>
+</body>
+
 </html>
