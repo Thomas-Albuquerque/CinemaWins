@@ -35,9 +35,9 @@
             </a>
           </li>
           <li class="list">
-            <a href="#" class="nav-link">
+            <a href="social.html" class="nav-link">
               <i class="bx bx-bar-chart-alt-2 icon"></i>
-              <span class="link">Revenue</span>
+              <span class="link">Feed</span>
             </a>
           </li>
           <li class="list">
@@ -130,9 +130,70 @@
     </div>
     <div class="container-ranking">
       <div class="ranking">
-        <p>Cinéfilos cadastrados</p>
+        <p>Ranking de Pontuação</p>
+        <div class="ranking-text">
+        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Posição</p>
+        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Usuário</p>
+        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Pontuação</p>
+        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Vezes jogadas</p>
       </div>
-      <div class="jogos"></div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">1º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">2º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">3º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">4º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">5º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      <div class="ranking-text1">
+        <p style="font-size: 15px; font-weight: 100;">6º</p>
+        <p style="font-size: 15px; font-weight: 100;">Thomas</p>
+        <p style="font-size: 15px; font-weight: 100;">1,200</p>
+        <p style="font-size: 15px; font-weight: 100;">10</p>
+      </div>
+      </div>
+      <div class="jogos">
+        <p>Quizes</p>
+        <p style="font-size: 15px; font-weight: 100;">Jogue agora e teste seus conhecimentos em diferentes areas do cinema</p>
+        <div class="center">
+          <div onclick="irParaQuiz()" class="article-card">
+            <div class="content">
+              <p class="date">Mar 31, 2024</p>
+              <p class="title">Conhecimentos Gerais</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="article-cover" />
+          </div>
+          <div class="article-card">
+            <div class="content">
+              <p class="date">Mar 01, 2024</p>
+              <p class="title">Gênero terror</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1490279881985-a8950e1e932f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="article-cover" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -174,6 +235,10 @@
       document.getElementById('myChart'),
       config
     );
+
+   function irParaQuiz(){
+    window.location = "../tela_inicial.html"
+   }
 
 
 
