@@ -24,6 +24,16 @@ PRIMARY KEY (idResposta, fkUsuario, fkQuiz),
 pontuacao INT
 );
 
+CREATE TABLE review (
+    idReview INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT,
+    foto VARCHAR(256),
+    titulo VARCHAR(100),
+    descricao VARCHAR(263),
+    data_publicacao DATETIME,
+    CONSTRAINT fkUsuarioReview FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
+);
+
 SELECT * FROM usuario;
 
 SELECT * FROM quiz;

@@ -61,13 +61,13 @@
                 "pergunta": "Qual filme ganhou o Oscar de Melhor Filme em 1994?",
                 "opcoes": ["Forrest Gump", "Pulp Fiction", "The Shawshank Redemption", "Quiz Show"],
                 "resposta": "A",
-                "pontuacao": 5
+                "pontuacao": 10
             },
             {
                 "pergunta": "Quem dirigiu o filme 'A Origem' (Inception)?",
                 "opcoes": ["Steven Spielberg", "Quentin Tarantino", "Christopher Nolan", "James Cameron"],
                 "resposta": "C",
-                "pontuacao": 5
+                "pontuacao": 10
             },
             {
                 "pergunta": "Qual é o nome do hobbit interpretado por Elijah Wood na trilogia 'O Senhor dos Anéis'?",
@@ -79,13 +79,13 @@
                 "pergunta": "Em que filme de 1999, Keanu Reeves interpreta um hacker chamado Neo?",
                 "opcoes": ["Johnny Mnemonic", "O Substituto", "Matrix", "Velocidade Máxima"],
                 "resposta": "C",
-                "pontuacao": 5
+                "pontuacao": 10
             },
             {
                 "pergunta": "Qual atriz interpretou Katniss Everdeen na série de filmes 'Jogos Vorazes'?",
                 "opcoes": ["Emma Stone", "Jennifer Lawrence", "Kristen Stewart", "Scarlett Johansson"],
                 "resposta": "B",
-                "pontuacao": 5
+                "pontuacao": 10
             },
             {
                 "pergunta": "Filme estrelado por Winona Ryder, Angelina Jolie, Brittany Murphy e Whoopi Goldberg, Dirigido por Jason Mangold.",
@@ -145,50 +145,35 @@
                 text: `${pontuacao}`,
                 icon: "success"
             });
+
             var usuarioIdVar = sessionStorage.ID_USUARIO;
+
             fetch("/usuarios/quiz", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
                     usuarioIdServer: usuarioIdVar,
                     idQuizServer: 1,
                     pontuacaoServer: pontuacao,
-                    // empresaServer: empresaVar
                 }),
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                    //     cardErro.style.display = "block";
-
-                    //     mensagem_erro.innerHTML =
-                    //         "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    //     setTimeout(() => {
-                    //         window.location = "login.html";
-                    //     }, "2000");
-
-                    //     limparFormulario();
-                    //     finalizarAguardar();
                     } else {
                         throw "Houve um erro ao responder!";
                     }
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
-                    // finalizarAguardar();
                 });
         }
-
         window.onload = function () {
             carregarPergunta();
         }
-
     </script>
 
 </body>
