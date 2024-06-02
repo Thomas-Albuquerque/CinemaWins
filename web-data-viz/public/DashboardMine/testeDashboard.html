@@ -53,7 +53,7 @@
             </a>
           </li>
           <li class="list">
-            <a href="#" class="nav-link">
+            <a href="historico.html" class="nav-link">
               <i class="bx bx-pie-chart-alt-2 icon"></i>
               <span class="link">Analytics</span>
             </a>
@@ -340,8 +340,6 @@
         });
     }
 
-
-
     function obterTresMaioresPontuacoes() {
       fetch(`/usuarios/obterTresMaioresPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
         method: "GET",
@@ -471,18 +469,19 @@ function obterRankingPontuacao() {
             rankingHTML += `</div>`;
             containerRanking.innerHTML += rankingHTML;
         }
+        
 
         window.onload = function () {
             vezesJogadas();
             obterMaiorPontuacao();
-            obterMenorPontuacao();
-            obterTotalPontuacao();
+            obterMenorPontuacao();  
             obterTotalPontuacao();
             obterTresMaioresPontuacoes();
             nomeUsuario();
             obterTotalUsuarios();
             obterRankingPontuacao();
         };
+
   </script>
   <script src="script.js"></script>
 </body>

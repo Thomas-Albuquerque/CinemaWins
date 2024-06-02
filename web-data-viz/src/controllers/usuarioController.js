@@ -14,7 +14,7 @@ function autenticar(req, res) {
         usuarioModel.autenticar(email, senha)
             .then(function (resultadoAutenticar) {
                 console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); 
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`);
 
                 if (resultadoAutenticar.length === 1) {
                     console.log(resultadoAutenticar);
@@ -188,14 +188,14 @@ function obterTotalPontuacao(req, res) {
         res.status(400).send("O ID do usuário está indefinido.");
     } else {
         usuarioModel.obterTotalPontuacao(usuarioId)
-            .then(function(resultado) {
+            .then(function (resultado) {
                 if (resultado.length > 0) {
                     res.json({ total_pontuacao: resultado[0].total_pontuacao });
                 } else {
                     res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
                 }
             })
-            .catch(function(erro) {
+            .catch(function (erro) {
                 console.error("Erro ao obter o total de pontuação:", erro);
                 res.status(500).json(erro);
             });
@@ -210,14 +210,14 @@ function obterTresMaioresPontuacoes(req, res) {
         return;
     }
     usuarioModel.obterTresMaioresPontuacoes(usuarioId)
-        .then(function(resultado) {
+        .then(function (resultado) {
             if (resultado.length > 0) {
                 res.json(resultado);
             } else {
                 res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
             }
         })
-        .catch(function(erro) {
+        .catch(function (erro) {
             console.error("Erro ao obter as três maiores pontuações:", erro);
             res.status(500).json({ error: "Erro interno do servidor" });
         });
@@ -231,14 +231,14 @@ function nomeUsuario(req, res) {
         return;
     }
     usuarioModel.nomeUsuario(usuarioId)
-        .then(function(resultado) {
+        .then(function (resultado) {
             if (resultado.length > 0) {
                 res.json(resultado[0]);
             } else {
                 res.status(404).send("Nenhum nome encontrado");
             }
         })
-        .catch(function(erro) {
+        .catch(function (erro) {
             console.error("Erro ao obter o nome do usuário:", erro);
             res.status(500).json({ error: "Erro interno do servidor" });
         });
@@ -246,14 +246,14 @@ function nomeUsuario(req, res) {
 
 function contarTotalUsuarios(req, res) {
     usuarioModel.contarTotalUsuarios()
-        .then(function(resultado) {
+        .then(function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado[0]); 
+                res.json(resultado[0]);
             } else {
                 res.status(404).send("Nenhum usuário encontrado");
             }
         })
-        .catch(function(erro) {
+        .catch(function (erro) {
             console.error("Erro ao contar o total de usuários:", erro);
             res.status(500).json({ error: "Erro interno do servidor" });
         });
@@ -261,14 +261,14 @@ function contarTotalUsuarios(req, res) {
 
 function obterRankingPontuacao(req, res) {
     usuarioModel.obterRankingPontuacao()
-        .then(function(resultado) {
+        .then(function (resultado) {
             if (resultado.length > 0) {
                 res.json(resultado);
             } else {
                 res.status(404).send("Nenhuma pontuação encontrada");
             }
         })
-        .catch(function(erro) {
+        .catch(function (erro) {
             console.error("Erro ao obter o ranking de pontuação:", erro);
             res.status(500).json({ error: "Erro interno do servidor" });
         });
@@ -310,6 +310,26 @@ function obterReviews(req, res) {
         });
 }
 
+function obterTodasPontuacoes(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+        return;
+    }
+    usuarioModel.obterTodasPontuacoes(usuarioId)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro ao obter todas as pontuações:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
 
 
 module.exports = {
@@ -325,7 +345,8 @@ module.exports = {
     contarTotalUsuarios,
     obterRankingPontuacao,
     cadastrarReview,
-    obterReviews
+    obterReviews,
+    obterTodasPontuacoes
 };
 
 

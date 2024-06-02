@@ -56,5 +56,9 @@ router.get('/obterReviews', function(req, res) {
     usuarioController.obterReviews(req, res);
 });
 
+router.get('/obterTodasPontuacoes', function(req, res) {
+    usuarioController.obterTodasPontuacoes(req, res);
+});
+
 
 module.exports = router;

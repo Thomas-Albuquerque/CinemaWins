@@ -22,6 +22,7 @@ nav {
   align-items: center;
   background: #fff;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 nav .logo {
   display: flex;
@@ -347,7 +348,7 @@ nav.open ~ .overlay {
   flex-direction: row;
   margin-top: 7%;
   margin-left: 2.5%;
-  gap: 83%;
+  gap: 75%;
 }
 
 .centered-hr {
@@ -360,8 +361,8 @@ nav.open ~ .overlay {
 .container-filmCard{
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Alinhar os cards à esquerda */
-  align-items: flex-start; /* Alinhar os cards ao topo */
+  justify-content: flex-start; 
+  align-items: flex-start; 
   margin-left: 2.5%;
   flex-direction: row;
   gap: 15px;
@@ -372,9 +373,9 @@ nav.open ~ .overlay {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start; 
-  width: calc(50% - 20px); /* Defina a largura para 50% da largura da tela menos a margem */
-  max-width: 600px; /* Defina uma largura máxima para os cards */
-  height: 287px; /* Defina o tamanho do card */
+  width: calc(50% - 20px); 
+  max-width: 600px; 
+  height: 287px; 
   background-color: #333;
   padding: 10px;
 }

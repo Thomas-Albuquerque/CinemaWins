@@ -143,6 +143,18 @@ function obterReviews() {
     return database.executar(instrucaoSql);
 }
 
+function obterTodasPontuacoes(usuarioId) {
+    console.log("Acessando o método obterTodasPontuacoes no modelo do usuário");
+    var instrucaoSql = `
+        SELECT resposta.pontuacao
+        FROM resposta
+        WHERE resposta.fkUsuario = ${usuarioId}
+        ORDER BY resposta.idResposta ASC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     autenticar,
@@ -157,5 +169,6 @@ module.exports = {
     contarTotalUsuarios,
     obterRankingPontuacao,
     cadastrarReview,
-    obterReviews
+    obterReviews,
+    obterTodasPontuacoes
 };

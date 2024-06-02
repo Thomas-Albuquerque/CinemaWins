@@ -15,7 +15,7 @@
   </head>
 
   <body onload="obterReviews()">
-    <nav>
+    <nav style="z-index: 0 !important;">
       <div class="logo">
         <i class="bx bx-menu menu-icon"></i>
         <span class="logo-name">CinemaWins</span>
@@ -266,7 +266,7 @@
           reviewCard.classList.add("filmCard");
 
           var imgDiv = document.createElement("div");
-          imgDiv.classList.add("img"); // Adiciona a classe 'img' para estilização
+          imgDiv.classList.add("img");
 
           var userContainer = document.createElement("div");
           userContainer.classList.add("user-container");
@@ -319,7 +319,7 @@
           userContainer.appendChild(description);
           userContainer.appendChild(likeContainer);
 
-          reviewCard.appendChild(imgDiv); // Adiciona a div da imagem
+          reviewCard.appendChild(imgDiv); 
           reviewCard.appendChild(userContainer);
 
           containerReviews.appendChild(reviewCard);

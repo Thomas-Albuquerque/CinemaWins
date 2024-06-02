@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <script src="../js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <i class="bx bx-menu menu-icon"></i>
+            <span class="logo-name">CinemaWins</span>
+        </div>
+        <div class="sidebar">
+            <div class="logo">
+                <i class="bx bx-menu menu-icon"></i>
+                <span class="logo-name">CinemaWins</span>
+            </div>
+
+            <div class="sidebar-content">
+                <ul class="lists">
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-home-alt icon"></i>
+                            <span class="link">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="social.html" class="nav-link">
+                            <i class="bx bx-bar-chart-alt-2 icon"></i>
+                            <span class="link">Feed</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-bell icon"></i>
+                            <span class="link">Notifications</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-message-rounded icon"></i>
+                            <span class="link">Messages</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="historico.html" class="nav-link">
+                            <i class="bx bx-pie-chart-alt-2 icon"></i>
+                            <span class="link">Analytics</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-heart icon"></i>
+                            <span class="link">Likes</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-folder-open icon"></i>
+                            <span class="link">Files</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="bottom-cotent">
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-cog icon"></i>
+                            <span class="link">Settings</span>
+                        </a>
+                    </li>
+                    <li class="list">
+                        <a href="#" class="nav-link">
+                            <i class="bx bx-log-out icon"></i>
+                            <span class="link">Logout</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="overlay"></section>
+    <div class="incial">
+        <div
+            style="display: flex; justify-content: center; align-items: center;height: 50vh; width: 50vw; flex-direction: column; margin-top: 10%;">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        let myChart; // Definindo myChart no escopo global
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+            };
+
+            myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        });
+
+        function obterTodasPontuacoes() {
+            fetch(`/usuarios/obterTodasPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(function (resposta) {
+                    if (!resposta.ok) {
+                        throw new Error("Erro ao obter todas as pontuações.");
+                    }
+                    return resposta.json();
+                })
+                .then(function (data) {
+                    console.log("Todas as pontuações: ", data);
+
+                    const labels = [];
+                    const pontuacoes = [];
+
+                    for (let contadorPartidas = 0; contadorPartidas < data.length; contadorPartidas++) {
+                        const numeroJogo = contadorPartidas + 1;
+                        const pontuacao = parseInt(data[contadorPartidas].pontuacao);
+                        labels.push(`Partida ${numeroJogo}`);
+
+
+                        pontuacoes.push(pontuacao);
+                    }
+
+                    myChart.data.labels = labels;
+                    myChart.data.datasets[0].data = pontuacoes;
+
+                    myChart.update();
+                })
+                .catch(function (erro) {
+                    console.error("Erro ao obter todas as pontuações: ", erro);
+                });
+        }
+
+        window.onload = function () {
+            obterTodasPontuacoes();
+        };
+    </script>
+</body>
+
+</html>
