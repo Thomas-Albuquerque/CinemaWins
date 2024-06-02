@@ -2,6 +2,7 @@ CREATE DATABASE CinemaWins;
 
 USE CinemaWins;
 
+
 CREATE TABLE usuario(
 id INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(80),
@@ -30,13 +31,19 @@ CREATE TABLE review (
     foto VARCHAR(256),
     titulo VARCHAR(100),
     descricao VARCHAR(263),
+    qtd_curtidas INT,
     data_publicacao DATETIME,
     CONSTRAINT fkUsuarioReview FOREIGN KEY (fkUsuario) REFERENCES usuario(id)
 );
 
 SELECT * FROM usuario;
 
+SELECT * FROM review;
+
 SELECT * FROM quiz;
+
+SELECT usuario.nome  AS nome_Usuario
+        FROM usuario WHERE id = 2;
 
 SELECT * FROM resposta;
 
@@ -45,3 +52,29 @@ INSERT INTO quiz VALUES
 
 
 SELECT * FROM usuario JOIN resposta ON fkUsuario = id;
+
+SELECT usuario.id, usuario.nome, usuario.email, COUNT(resposta.idResposta) AS total_jogadas
+FROM usuario
+LEFT JOIN resposta ON usuario.id = resposta.fkUsuario
+GROUP BY usuario.id, usuario.nome, usuario.email;
+
+SELECT usuario.nome, resposta.fkUsuario, MAX(resposta.pontuacao) AS maior_pontuacao
+FROM resposta 
+JOIN usuario ON resposta.fkUsuario = usuario.id
+GROUP BY resposta.fkUsuario;
+
+SELECT usuario.nome, resposta.fkUsuario, MIN(resposta.pontuacao) AS menor_pontuacao
+FROM resposta 
+JOIN usuario ON resposta.fkUsuario = usuario.id
+GROUP BY resposta.fkUsuario;
+
+SELECT usuario.id, usuario.nome, usuario.email, SUM(resposta.pontuacao) AS total_pontuacao
+FROM usuario
+JOIN resposta ON usuario.id = resposta.fkUsuario
+GROUP BY usuario.id, usuario.nome, usuario.email;
+
+SELECT usuario.id, usuario.nome, usuario.email, SUM(resposta.pontuacao) AS total_pontuacao
+FROM usuario
+JOIN resposta ON usuario.id = resposta.fkUsuario
+GROUP BY usuario.id, usuario.nome, usuario.email
+ORDER BY total_pontuacao DESC;

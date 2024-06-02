@@ -112,7 +112,7 @@
     <div class="container-cardUser">
       <div class="cardUser">
         <p>Bem vindo(a) de volta,</p>
-        <p style="font-size: 28px; color: #FFFFFF; font-weight: 900;"><span id="b_usuario"></span></p>
+        <p style="font-size: 28px; color: #FFFFFF; font-weight: 900;"><span id="nome_Usuario"></span></p>
         <p>Prepare-se<br> para alcançar<br> o TOP 1!</p>
       </div>
       <div class="metricasUser">
@@ -120,7 +120,7 @@
         <span style="font-size: 15px; color: #A0AEC0; font-weight: 200;">no projeto</span>
         <div class="total-container">
           <div class="total-user">
-            <span>98</span>
+            <span id="total_usuarios"></span>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@
       </div>
     </div>
     <div class="container-ranking">
-      <div class="ranking">
+      <!-- <div class="ranking">
         <p>Ranking de Pontuação</p>
         <div class="ranking-text">
           <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Posição</p>
@@ -173,7 +173,7 @@
           <p style="font-size: 15px; font-weight: 100;">1,200</p>
           <p style="font-size: 15px; font-weight: 100;">10</p>
         </div>
-      </div>
+      </div> -->
       <div class="jogos">
         <p>Quizes</p>
         <p style="font-size: 15px; font-weight: 100;">Jogue agora e teste seus conhecimentos em diferentes areas do
@@ -340,27 +340,7 @@
         });
     }
 
-    function obterTotalPontuacao() {
-      fetch(`/usuarios/totalPontuacao?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(function (resposta) {
-          if (!resposta.ok) {
-            throw new Error("Erro ao obter o total de pontuação.");
-          }
-          return resposta.json();
-        })
-        .then(function (data) {
-          console.log("Total de pontuação: ", data.total_pontuacao);
-          document.getElementById("total-pontuacao").innerText = data.total_pontuacao;
-        })
-        .catch(function (erro) {
-          console.error("Erro ao obter o total de pontuação: ", erro);
-        });
-    }
+
 
     function obterTresMaioresPontuacoes() {
       fetch(`/usuarios/obterTresMaioresPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
@@ -391,18 +371,120 @@
         });
     }
 
-    window.onload = function () {
-      validarSessao();
-      vezesJogadas();
-      obterMaiorPontuacao();
-      obterMenorPontuacao();
-      obterTotalPontuacao();
-      obterTotalPontuacao();
-      obterTresMaioresPontuacoes();
-    };
+    function nomeUsuario() {
 
-  </script>
+      console.log("ID do usuário enviado para obterTotalJogadas:", sessionStorage.getItem('ID_USUARIO'));
+
+      fetch(`/usuarios/nomeUsuario?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function (resposta) {
+          if (!resposta.ok) {
+            throw new Error("Erro ao obter o total de jogadas.");
+          }
+          return resposta.json();
+        })
+        .then(function (data) {
+          console.log("nome do usuário: ", data.nome_Usuario);
+          document.getElementById("nome_Usuario").innerText = data.nome_Usuario;
+        })
+        .catch(function (erro) {
+          console.error("Erro ao obter o total de jogadas: ", erro);
+        });
+    }
+
+    function obterTotalUsuarios() {
+    console.log("Obtendo o total de usuários cadastrados...");
+
+    fetch('/usuarios/contarTotalUsuarios', {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(function (resposta) { 
+        if (!resposta.ok) {
+            throw new Error("Erro ao obter o total de usuários.");
+        }
+        return resposta.json();
+    })
+    .then(function (data) {
+        console.log("Total de usuários: ", data.total_usuarios);
+        document.getElementById("total_usuarios").innerText = data.total_usuarios;
+    })
+    .catch(function (erro) {
+        console.error("Erro ao obter o total de usuários: ", erro);
+    });
+}
+
+function obterRankingPontuacao() {
+            console.log("Obtendo o ranking de pontuação...");
+
+            fetch('/usuarios/obterRankingPontuacao', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Erro ao obter o ranking de pontuação.");
+                }
+                return resposta.json();
+            })
+            .then(function (data) {
+                console.log("Ranking de pontuação: ", data);
+                atualizarRanking(data);
+            })
+            .catch(function (erro) {
+                console.error("Erro ao obter o ranking de pontuação: ", erro);
+            });
+        }
+
+        function atualizarRanking(data) {
+            var containerRanking = document.querySelector(".container-ranking");
+            var rankingHTML = `
+                <div class="ranking">
+                    <p>Ranking de Pontuação</p>
+                    <div class="ranking-text">
+                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Posição</p>
+                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Usuário</p>
+                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Pontuação</p>
+                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Vezes jogadas</p>
+                    </div>
+            `;
+
+            data.forEach((usuario, index) => {
+                rankingHTML += `
+                    <div class="ranking-text1">
+                        <p style="font-size: 15px; font-weight: 100;">${index + 1}º</p>
+                        <p style="font-size: 15px; font-weight: 100;">${usuario.nome}</p>
+                        <p style="font-size: 15px; font-weight: 100;">${usuario.total_pontuacao}</p>
+                        <p style="font-size: 15px; font-weight: 100;">${usuario.total_jogadas}</p>
+                    </div>
+                `;
+            });
+
+            rankingHTML += `</div>`;
+            containerRanking.innerHTML += rankingHTML;
+        }
+
+        window.onload = function () {
+            vezesJogadas();
+            obterMaiorPontuacao();
+            obterMenorPontuacao();
+            obterTotalPontuacao();
+            obterTotalPontuacao();
+            obterTresMaioresPontuacoes();
+            nomeUsuario();
+            obterTotalUsuarios();
+            obterRankingPontuacao();
+        };
   </script>
   <script src="script.js"></script>
 </body>
+
 </html>

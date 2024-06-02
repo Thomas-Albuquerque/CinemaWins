@@ -36,4 +36,25 @@ router.get('/obterTresMaioresPontuacoes', function(req, res) {
     usuarioController.obterTresMaioresPontuacoes(req, res);
 });
 
+router.get('/nomeUsuario', function(req, res) {
+    usuarioController.nomeUsuario(req, res);
+});
+
+router.get('/contarTotalUsuarios', function(req, res) {
+    usuarioController.contarTotalUsuarios(req, res);
+});
+
+router.get('/obterRankingPontuacao', function(req, res) {
+    usuarioController.obterRankingPontuacao(req, res);
+});
+
+router.post('/cadastrarReview', function(req, res) {
+    usuarioController.cadastrarReview(req, res);
+});
+
+router.get('/obterReviews', function(req, res) {
+    usuarioController.obterReviews(req, res);
+});
+
+
 module.exports = router;

@@ -88,6 +88,62 @@ function obterTresMaioresPontuacoes() {
     return database.executar(instrucaoSql);
 }
 
+function nomeUsuario(usuarioId) {
+    console.log("Acessando o método nome no modelo do usuário");
+    var instrucaoSql = `
+    SELECT usuario.nome  AS nome_Usuario
+    FROM usuario WHERE id = ${usuarioId};
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function contarTotalUsuarios() {
+    console.log("Acessando o método contarTotalUsuarios no modelo do usuário");
+    var instrucaoSql = `
+    SELECT COUNT(*) AS total_usuarios FROM usuario;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function obterRankingPontuacao() {
+    console.log("Acessando o método obterRankingPontuacao no modelo do usuário");
+    var instrucaoSql = `
+    SELECT usuario.nome, SUM(resposta.pontuacao) AS total_pontuacao, COUNT(resposta.idResposta) AS total_jogadas
+    FROM usuario
+    LEFT JOIN resposta ON usuario.id = resposta.fkUsuario
+    GROUP BY usuario.id, usuario.nome
+    ORDER BY total_pontuacao DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function cadastrarReview(usuarioId, titulo, descricao) {
+    var instrucaoSql = `
+        INSERT INTO review (fkUsuario, titulo, descricao, data_publicacao)
+        VALUES (${usuarioId}, '${titulo}', '${descricao}', NOW());
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    return database.executar(instrucaoSql);
+}
+
+function obterReviews() {
+    var instrucaoSql = `
+        SELECT r.idReview, u.nome, r.data_publicacao, r.titulo, r.descricao
+        FROM review r
+        INNER JOIN usuario u ON r.fkUsuario = u.id
+        ORDER BY r.data_publicacao DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -96,5 +152,10 @@ module.exports = {
     obterMaiorPontuacao,
     obterMenorPontuacao,
     obterTotalPontuacao,
-    obterTresMaioresPontuacoes
+    obterTresMaioresPontuacoes,
+    nomeUsuario,
+    contarTotalUsuarios,
+    obterRankingPontuacao,
+    cadastrarReview,
+    obterReviews
 };

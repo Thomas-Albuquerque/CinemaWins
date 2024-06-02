@@ -359,19 +359,22 @@ nav.open ~ .overlay {
 
 .container-filmCard{
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Alinhar os cards à esquerda */
+  align-items: flex-start; /* Alinhar os cards ao topo */
   margin-left: 2.5%;
   flex-direction: row;
-  gap: 20px;
+  gap: 15px;
 }
 
 .filmCard{
+  margin: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start; 
-  width: 620px;
-  height: 287px;
+  width: calc(50% - 20px); /* Defina a largura para 50% da largura da tela menos a margem */
+  max-width: 600px; /* Defina uma largura máxima para os cards */
+  height: 287px; /* Defina o tamanho do card */
   background-color: #333;
   padding: 10px;
 }
@@ -678,4 +681,46 @@ a {
 }
 .hidden {
   display: none;
+}
+
+.metric-value {
+  font-size: 19px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.username {
+  font-size: 28px;
+  color: #FFFFFF;
+  font-weight: 900;
+}
+
+.metric-description {
+  font-size: 15px;
+  color: #A0AEC0;
+  font-weight: 200;
+}
+
+.modal-container-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modal-container-body label {
+  margin-bottom: 8px;
+}
+
+.modal-container-body input,
+.modal-container-body textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box; 
+}
+
+.modal-container-footer {
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: 16px;
 }

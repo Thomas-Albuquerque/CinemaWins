@@ -75,12 +75,10 @@ function cadastrar(req, res) {
 }
 
 function quiz(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var usuario = req.body.usuarioIdServer;
     var quiz = req.body.idQuizServer;
     var pontuacao = req.body.pontuacaoServer;
 
-    // Faça as validações dos valores
     if (usuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (quiz == undefined) {
@@ -89,7 +87,6 @@ function quiz(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.quiz(usuario, quiz, pontuacao)
             .then(
                 function (resultado) {
@@ -226,6 +223,93 @@ function obterTresMaioresPontuacoes(req, res) {
         });
 }
 
+function nomeUsuario(req, res) {
+    var usuarioId = req.query.usuarioId;
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+        return;
+    }
+    usuarioModel.nomeUsuario(usuarioId)
+        .then(function(resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]);
+            } else {
+                res.status(404).send("Nenhum nome encontrado");
+            }
+        })
+        .catch(function(erro) {
+            console.error("Erro ao obter o nome do usuário:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
+
+function contarTotalUsuarios(req, res) {
+    usuarioModel.contarTotalUsuarios()
+        .then(function(resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]); 
+            } else {
+                res.status(404).send("Nenhum usuário encontrado");
+            }
+        })
+        .catch(function(erro) {
+            console.error("Erro ao contar o total de usuários:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
+
+function obterRankingPontuacao(req, res) {
+    usuarioModel.obterRankingPontuacao()
+        .then(function(resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).send("Nenhuma pontuação encontrada");
+            }
+        })
+        .catch(function(erro) {
+            console.error("Erro ao obter o ranking de pontuação:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
+
+function cadastrarReview(req, res) {
+    var usuario = req.body.usuarioIdServer;
+    var titulo = req.body.tituloServer;
+    var descricao = req.body.descricaoServer;
+
+    if (usuario == undefined) {
+        res.status(400).send("O ID do usuário está indefinido!");
+    } else if (titulo == undefined) {
+        res.status(400).send("O título da review está indefinido!");
+    } else if (descricao == undefined) {
+        res.status(400).send("A descrição da review está indefinida!");
+    } else {
+        usuarioModel.cadastrarReview(usuario, titulo, descricao)
+            .then(function (resultado) {
+                res.status(201).json({ mensagem: "Review cadastrado com sucesso!" });
+            })
+            .catch(function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o cadastro da review:", erro.sqlMessage);
+                res.status(500).json({ erro: "Erro interno do servidor ao cadastrar a review" });
+            });
+    }
+}
+
+function obterReviews(req, res) {
+    usuarioModel.obterReviews()
+        .then(function (reviews) {
+            res.status(200).json(reviews);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao obter as reviews:", erro.sqlMessage);
+            res.status(500).json({ erro: "Erro interno do servidor ao obter as reviews" });
+        });
+}
+
 
 
 module.exports = {
@@ -236,5 +320,12 @@ module.exports = {
     obterMaiorPontuacao,
     obterMenorPontuacao,
     obterTotalPontuacao,
-    obterTresMaioresPontuacoes
-}
+    obterTresMaioresPontuacoes,
+    nomeUsuario,
+    contarTotalUsuarios,
+    obterRankingPontuacao,
+    cadastrarReview,
+    obterReviews
+};
+
+
