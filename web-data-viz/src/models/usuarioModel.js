@@ -12,7 +12,7 @@ function autenticar(email, senha) {
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
@@ -24,7 +24,7 @@ function cadastrar(nome, email, senha) {
 
 function quiz(usuario, quiz, pontuacao) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", usuario, quiz, pontuacao);
-    
+
     var instrucaoSql = `
     INSERT INTO resposta (fkUsuario, fkQuiz, pontuacao) VALUES (${usuario}, ${quiz}, ${pontuacao});
 `;
@@ -34,7 +34,7 @@ function quiz(usuario, quiz, pontuacao) {
 
 function vezesJogadas(usuarioId) {
     console.log("Acessando o método obterTotalJogadas no usuárioModel");
-    
+
     var instrucaoSql = `
         SELECT COUNT(*) AS total_jogadas
         FROM resposta
@@ -133,10 +133,18 @@ function cadastrarReview(usuarioId, titulo, descricao) {
 
 function obterReviews() {
     var instrucaoSql = `
-        SELECT r.idReview, u.nome, r.data_publicacao, r.titulo, r.descricao
-        FROM review r
-        INNER JOIN usuario u ON r.fkUsuario = u.id
-        ORDER BY r.data_publicacao DESC;
+    SELECT 
+    r.idReview,
+    u.nome,
+    DATE_FORMAT(r.data_publicacao, '%d/%m/%Y %H:%i:%s') AS data_publicacao_formatada,
+    r.titulo,
+    r.descricao,
+    r.qtd_curtidas
+FROM review r
+INNER JOIN usuario u ON r.fkUsuario = u.id
+ORDER BY r.data_publicacao DESC;
+
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 

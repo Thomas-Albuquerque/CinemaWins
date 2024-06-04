@@ -285,7 +285,7 @@
           title.style.color = "white";
 
           var date = document.createElement("span");
-          date.textContent = review.data_publicacao;
+          date.textContent = review.data_publicacao_formatada;
           date.style.color = "rgb(173, 173, 173)";
           date.style.fontSize = "13px";
 
@@ -304,7 +304,7 @@
 
           var likeCount = document.createElement("div");
           likeCount.classList.add("container-textoLike");
-          likeCount.innerHTML = `<span>${review.numero_curtidas} curtidas</span>`;
+          likeCount.innerHTML = `<span>${review.qtd_curtidas} curtidas</span>`;
 
           likeContainer.appendChild(likeIcon);
           likeContainer.appendChild(likeText);
