@@ -78,6 +78,8 @@ function quiz(req, res) {
     var usuario = req.body.usuarioIdServer;
     var quiz = req.body.idQuizServer;
     var pontuacao = req.body.pontuacaoServer;
+    var acertos = req.body.acertosServer;
+    var erros = req.body.errosServer;
 
     if (usuario == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -87,7 +89,7 @@ function quiz(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        usuarioModel.quiz(usuario, quiz, pontuacao)
+        usuarioModel.quiz(usuario, quiz, pontuacao, acertos, erros)
             .then(
                 function (resultado) {
                     res.json(resultado);

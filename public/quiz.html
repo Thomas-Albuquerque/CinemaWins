@@ -24,10 +24,56 @@
         .errada {
             background-color: rgb(124, 12, 12);
         }
+
+
+        .tv-container {
+            position: absolute;
+            display: inline-block;
+            top: 0%
+        }
+
+        .tv-container img {
+            display: block;
+        }
+
+        .pontuacao-display {
+            position: absolute;
+            top: 65%;
+            left: 53.5%;
+            transform: translate(-50%, -20%);
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+            z-index: 1;
+            width: 200px;
+            height: 100px;
+            pointer-events: none;
+            font-family: 'ArcadeFont', cursive;
+        }
+
+        .pontuacao-display p {
+            margin: 0;
+        }
+
+        .pontuacao-display .label {
+            font-size: 0.8em;
+        }
+
+        .pontuacao-display .score {
+            font-size: 1.5em;
+        }
     </style>
 </head>
 
-<body style="background-image: url(./img/bg_movie.png);">
+<body
+    style="background-image: url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-repeat:no-repeat; background-size: cover;">
+    <div class="tv-container">
+        <img src="img/image 66.svg" alt="TV">
+        <div class="pontuacao-display" id="pontuacao-display">
+            <p class="label">Pontuação</p>
+            <p class="score" id="pontuacao-score">0</p>
+        </div>
+    </div>
     <div class="quiz-container">
         <p id="numero-questao">QUESTÃO 01/20</p><br>
         <p id="texto-questao" style="font-size: 20px;"></p>
@@ -52,14 +98,14 @@
     </div>
     <div class="pontuacao-card" id="pontuacao-card" style="display: none;">
         <h2>Quiz completo!</h2>
-        <p>Você marcou <span class="pontuacao" id="pontuacao">0</span> pontos de um total de <span
+        <p>Você marcou <span class="pontuacao" id="pontuacao-final">0</span> pontos de um total de <span
                 id="pontuacao-maxima">0</span> pontos.</p>
     </div>
     <script>
         const perguntas = [
             {
                 "pergunta": "Qual filme ganhou o Oscar de Melhor Filme em 1994?",
-                "opcoes": ["Forrest Gump", "Pulp Fiction", "The Shawshank Redemption", "Quiz Show"],
+                "opcoes": ["Forrest Gump", "Pulp Fiction", "Redemption", "Quiz Show"],
                 "resposta": "A",
                 "pontuacao": 10
             },
@@ -88,15 +134,53 @@
                 "pontuacao": 10
             },
             {
-                "pergunta": "Filme estrelado por Winona Ryder, Angelina Jolie, Brittany Murphy e Whoopi Goldberg, Dirigido por Jason Mangold.",
-                "opcoes": ["A volta de Roxy Carmichael", "Garota Interrompida", "O preço da coragem", "A época da inocência"],
+                "pergunta": "Qual desses atores venceram mais oscars?",
+                "opcoes": ["Robert De Niro", "Jack Nicholson", "Jamie Foxx", "Al Pacino"],
                 "resposta": "B",
                 "pontuacao": 10
-            }
+            },
+            {
+                "pergunta": "Qual destas obras do cinema não é de autoria do diretor David Fincher?",
+                "opcoes": ["Clube da Luta - 1999", "O Quarto do Pânico - 2002", "Garota Exemplar - 2014", "Cisne Negro - 2010"],
+                "resposta": "D",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Qual dessas grandes atrizes abaixo protagonizou o clássico O silêncio dos Inocentes de 1991?",
+                "opcoes": ["Julianne Moore", "Jodie Foster", "Frances McDormand", "Emma Thompson"],
+                "resposta": "B",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Que filme brasileiro venceu o Palma de Ouro no festival de Cannes?",
+                "opcoes": ["Que Horas Ela Volta", "Tropa de Elite 2", "Central Brasil", "O Pagador de Promessas"],
+                "resposta": "D",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Taxi Drive, Bons Companheiros e Gangues de New York são filmes de que diretor abaixo?",
+                "opcoes": ["Steven Spielberg", "Christopher Nollan", "Martin Scorsese", "Quentin Tarantin"],
+                "resposta": "C",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Latrell Spencer é personagem de qual filme?",
+                "opcoes": ["Se Beber, Não Case!", "As Branquelas", "Gente Grande", "Click"],
+                "resposta": "B",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Qual é a maior obra do diretor Quentin tarantino até agora?",
+                "opcoes": ["Django Livre", "Cães de Aluguel", "Pulp Fiction", "Kill Bill"],
+                "resposta": "C",
+                "pontuacao": 10
+            },
         ];
 
         let perguntaAtual = 0;
         let pontuacao = 0;
+        let acertos = 0;
+        let erros = 0;
 
         function selecionarResposta(resposta) {
             const opcaoSelecionada = document.getElementById(`abc-${resposta}`);
@@ -104,9 +188,14 @@
             if (resposta == perguntaAtualObj.resposta) {
                 opcaoSelecionada.style.backgroundColor = 'rgb(48, 97, 48)';
                 pontuacao += perguntaAtualObj.pontuacao;
+                document.getElementById('pontuacao-score').innerText = pontuacao;
+                acertos++;
             } else {
                 opcaoSelecionada.style.backgroundColor = 'rgb(124, 12, 12)';
+                erros++;
             }
+
+            console.log(`Acertos: ${acertos}, Erros: ${erros}`);
 
             setTimeout(() => {
                 perguntaAtual++;
@@ -140,12 +229,6 @@
         }
 
         function calcularPontuacaoMaxima() {
-            Swal.fire({
-                title: "Sua pontuação final é de:",
-                text: `${pontuacao}`,
-                icon: "success"
-            });
-
             var usuarioIdVar = sessionStorage.ID_USUARIO;
 
             fetch("/usuarios/quiz", {
@@ -157,12 +240,19 @@
                     usuarioIdServer: usuarioIdVar,
                     idQuizServer: 1,
                     pontuacaoServer: pontuacao,
+                    acertosServer: acertos,
+                    errosServer: erros,
                 }),
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
+                        Swal.fire({
+                            title: "Sua pontuação final é de:",
+                            text: `Pontuação: ${pontuacao}\nAcertos: ${acertos}\nErros: ${erros}`,
+                            icon: "success"
+                        });
                     } else {
                         throw "Houve um erro ao responder!";
                     }
@@ -171,9 +261,11 @@
                     console.log(`#ERRO: ${resposta}`);
                 });
         }
+
         window.onload = function () {
             carregarPergunta();
         }
+
     </script>
 
 </body>

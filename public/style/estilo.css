@@ -26,6 +26,11 @@ body {
     width: 100%;
 }
 
+@font-face {
+    font-family: 'ArcadeFont';
+    src: url('../fonts/PressStart2P-vaV7.ttf') format('truetype');
+}
+
 .headerblock{
     background-color: #BBB59F;
 }
@@ -765,7 +770,6 @@ margin-bottom: -30px;
     font-family: "Roboto", serif;
     font-size: 18px;
     color: rgba(255, 255, 255, 0.9);
-    
   }
 
   .botao-iniciar{
@@ -799,6 +803,7 @@ margin-bottom: -30px;
     font-family: "Roboto", serif;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.9);
+    width: 40%;
   }
 
   .opcao{
@@ -810,6 +815,7 @@ margin-bottom: -30px;
     margin-top: 4%;
     display: flex;
     align-items: center;
+    text-align: justify;
     padding-left: 2%;
   }
 

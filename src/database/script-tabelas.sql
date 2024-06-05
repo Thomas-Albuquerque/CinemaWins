@@ -22,7 +22,9 @@ fkQuiz INT,
 CONSTRAINT fkUsuarioResposta FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
 CONSTRAINT fkQuizResposta FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz),
 PRIMARY KEY (idResposta, fkUsuario, fkQuiz),
-pontuacao INT
+pontuacao INT,
+acertos INT,
+erros INT
 );
 
 CREATE TABLE review (

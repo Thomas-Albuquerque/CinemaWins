@@ -209,8 +209,7 @@
     var descricaoVar = document.getElementById("reviewDescricao").value;
 
     if (tituloVar === "" || descricaoVar === "") {
-      console.log("Por favor, preencha todos os campos");
-      return false;
+      alert("Por favor, preencha todos os campos");
     }
 
     fetch("/usuarios/cadastrarReview", {
