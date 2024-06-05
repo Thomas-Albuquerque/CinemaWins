@@ -52,6 +52,10 @@ SELECT * FROM resposta;
 INSERT INTO quiz VALUES 
 (1, 'Conhecimentos Gerais');
 
+INSERT INTO quiz VALUES 
+(2, ' Terror');
+
+
 
 SELECT * FROM usuario JOIN resposta ON fkUsuario = id;
 
