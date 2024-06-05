@@ -67,7 +67,7 @@
 </head>
 
 <body
-    style="background-image: url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-repeat:no-repeat; background-size: cover;">
+    style="background-image: url(./img/bg_movie.png); background-repeat:no-repeat; background-size: cover;">
     <div class="tv-container">
         <img src="img/image 66.svg" alt="TV">
         <div class="pontuacao-display" id="pontuacao-display">
@@ -108,75 +108,75 @@
     <script>
         const perguntas = [
             {
-                "pergunta": "Qual filme ganhou o Oscar de Melhor Filme em 1994?",
-                "opcoes": ["Forrest Gump", "Pulp Fiction", "Redemption", "Quiz Show"],
+                "pergunta": "No primeiro filme de Pânico, qual era o nome dos dois assassinos(a)?",
+                "opcoes": ["Jill e Charlie", "Billy e Stu", "Richie e Ambar", "Debbie Loomis e Mickey"],
+                "resposta": "B",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Quem era a mãe do Freddy Krueger?",
+                "opcoes": ["Uma freira", "Uma enfermeira", "Uma faxineira", "Ela nunca é mostrada no filme"],
                 "resposta": "A",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Quem dirigiu o filme 'A Origem' (Inception)?",
-                "opcoes": ["Steven Spielberg", "Quentin Tarantino", "Christopher Nolan", "James Cameron"],
+                "pergunta": "Em 'Boneco Assassino', como os humanos percebem que tem algo errado com o boneco?",
+                "opcoes": ["O fato dele aparecer em cômodos dierentes da casa", "Sua risada asssustadora", "Pelo fato dele se mexer sem pilhas", "Pelos seus olhos que mudam de cor"],
                 "resposta": "C",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Qual é o nome do hobbit interpretado por Elijah Wood na trilogia 'O Senhor dos Anéis'?",
-                "opcoes": ["Frodo Baggins", "Samwise Gamgee", "Bilbo Baggins", "Merry Brandybuck"],
+                "pergunta": "De onde 'vem' o Babadook?",
+                "opcoes": ["Do armário", "De um espelho", "De um ritual", "De um livro"],
+                "resposta": "D",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Qual o nome do assassino de Sexta-Feira 13 (1980)?",
+                "opcoes": ["Jason Voorhees", "Elias Voorhees", "Pamella Voorhees", "Scarlett Voorhees"],
+                "resposta": "C",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Qual a arma de Jason?",
+                "opcoes": ["Ele não usa armas", "Serra elétrica", "A faca de açougueiro", "Machete"],
+                "resposta": "D",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Qual filme foi o precursor do gênero slasher?",
+                "opcoes": ["A tortura do medo", "Psicose", "Massacre da serra elétrica", "Pânico"],
                 "resposta": "A",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Em que filme de 1999, Keanu Reeves interpreta um hacker chamado Neo?",
-                "opcoes": ["Johnny Mnemonic", "O Substituto", "Matrix", "Velocidade Máxima"],
-                "resposta": "C",
-                "pontuacao": 10
-            },
-            {
-                "pergunta": "Qual atriz interpretou Katniss Everdeen na série de filmes 'Jogos Vorazes'?",
-                "opcoes": ["Emma Stone", "Jennifer Lawrence", "Kristen Stewart", "Scarlett Johansson"],
-                "resposta": "B",
-                "pontuacao": 10
-            },
-            {
-                "pergunta": "Qual desses atores venceram mais oscars?",
-                "opcoes": ["Robert De Niro", "Jack Nicholson", "Jamie Foxx", "Al Pacino"],
-                "resposta": "B",
-                "pontuacao": 10
-            },
-            {
-                "pergunta": "Qual destas obras do cinema não é de autoria do diretor David Fincher?",
-                "opcoes": ["Clube da Luta - 1999", "O Quarto do Pânico - 2002", "Garota Exemplar - 2014", "Cisne Negro - 2010"],
+                "pergunta": "Qual filme tem como protagonista a garota Regan MacNeil?",
+                "opcoes": ["Pânico", "Halloween", "Massacre da serra elétrica", "O exorcista"],
                 "resposta": "D",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Qual dessas grandes atrizes abaixo protagonizou o clássico O silêncio dos Inocentes de 1991?",
-                "opcoes": ["Julianne Moore", "Jodie Foster", "Frances McDormand", "Emma Thompson"],
+                "pergunta": "Em pânico 6, quem é a personagem principal?",
+                "opcoes": ["Sam carpinter", "Jenna Ortega", "Agente Carby", "Jess"],
+                "resposta": "A",
+                "pontuacao": 10
+            },
+            {
+                "pergunta": "Quem dirigiu Pânico?",
+                "opcoes": ["Ridley Scott", "Wes Craven", "George Romero", "John Carpenter"],
                 "resposta": "B",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Que filme brasileiro venceu o Palma de Ouro no festival de Cannes?",
-                "opcoes": ["Que Horas Ela Volta", "Tropa de Elite 2", "Central Brasil", "O Pagador de Promessas"],
+                "pergunta": "Leatherface do Massacre da Serra Elétrica usa uma máscara feita de quê?",
+                "opcoes": ["Couro", "Nenhum desses", "Plástico", "Pele humana"],
                 "resposta": "D",
                 "pontuacao": 10
             },
             {
-                "pergunta": "Taxi Drive, Bons Companheiros e Gangues de New York são filmes de que diretor abaixo?",
-                "opcoes": ["Steven Spielberg", "Christopher Nollan", "Martin Scorsese", "Quentin Tarantin"],
-                "resposta": "C",
-                "pontuacao": 10
-            },
-            {
-                "pergunta": "Latrell Spencer é personagem de qual filme?",
-                "opcoes": ["Se Beber, Não Case!", "As Branquelas", "Gente Grande", "Click"],
-                "resposta": "B",
-                "pontuacao": 10
-            },
-            {
-                "pergunta": "Qual é a maior obra do diretor Quentin tarantino até agora?",
-                "opcoes": ["Django Livre", "Cães de Aluguel", "Pulp Fiction", "Kill Bill"],
-                "resposta": "C",
+                "pergunta": "Qual é a profissão de Hannibal Lecter, o serial killer que aparece em filmes como O Silêncio dos Inocentes?",
+                "opcoes": ["Psiquiatra", "Chefe de cozinha", "Dentista", "Pediatra"],
+                "resposta": "A",
                 "pontuacao": 10
             },
         ];
@@ -243,7 +243,7 @@
                 },
                 body: JSON.stringify({
                     usuarioIdServer: usuarioIdVar,
-                    idQuizServer: 1,
+                    idQuizServer: 2,
                     pontuacaoServer: pontuacao,
                     acertosServer: acertos,
                     errosServer: erros,
