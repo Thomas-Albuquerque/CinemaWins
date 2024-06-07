@@ -230,8 +230,8 @@ nav.open ~ .overlay {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 7%;
-  flex-direction: row;
+  margin-right: 8.5%;
+  flex-direction: row-reverse;
   gap:28px;
   margin-bottom: 41%;
 }
