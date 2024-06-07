@@ -436,12 +436,12 @@ nav.open ~ .overlay {
   gap:6px
 }
 
-.curtida{
+/* .curtida{
   width: 20px;
   height: 20px;
   background-color: #818181;
   border-radius: 100%;
-}
+} */
 
 .container-curtida span{
   font-size: 13px;
@@ -724,4 +724,20 @@ a {
   display: flex;
   justify-content: flex-end; 
   margin-top: 16px;
+}
+
+.icone-curtida{
+  color: white;
+  font-size: 1rem;
+}
+
+
+.fa-heart {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo para o ícone após a mudança */
+.curtida {
+  color: red; /* Ajuste a cor conforme necessário */
+  transform: scale(1.2);
 }
