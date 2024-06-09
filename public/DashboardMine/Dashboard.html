@@ -14,15 +14,15 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body style="background-image: url(https://mithsd.carrd.co/assets/images/container03.jpg?v=16376974); background-size: cover;">
   <nav>
     <div class="logo">
-      <i class="bx bx-menu menu-icon"></i>
+      <i style=" color: #e2e2e2;" class="bx bx-menu menu-icon"></i>
       <span class="logo-name">CinemaWins</span>
     </div>
     <div class="sidebar">
       <div class="logo">
-        <i class="bx bx-menu menu-icon"></i>
+        <i style=" color: #e2e2e2;" class="bx bx-menu menu-icon"></i>
         <span class="logo-name">CinemaWins</span>
       </div>
 
@@ -40,49 +40,49 @@
               <span class="link">Feed</span>
             </a>
           </li>
-          <li class="list">
+          <!-- <li class="list">
             <a href="#" class="nav-link">
               <i class="bx bx-bell icon"></i>
               <span class="link">Notifications</span>
             </a>
-          </li>
-          <li class="list">
+          </li> -->
+          <!-- <li class="list">
             <a href="#" class="nav-link">
               <i class="bx bx-message-rounded icon"></i>
               <span class="link">Messages</span>
             </a>
-          </li>
+          </li> -->
           <li class="list">
             <a href="historico.html" class="nav-link">
               <i class="bx bx-pie-chart-alt-2 icon"></i>
-              <span class="link">Analytics</span>
+              <span class="link">Histórico de partidas</span>
             </a>
           </li>
-          <li class="list">
+          <!-- <li class="list">
             <a href="#" class="nav-link">
               <i class="bx bx-heart icon"></i>
               <span class="link">Likes</span>
             </a>
-          </li>
-          <li class="list">
+          </li> -->
+          <!-- <li class="list">
             <a href="#" class="nav-link">
               <i class="bx bx-folder-open icon"></i>
               <span class="link">Files</span>
             </a>
-          </li>
+          </li> -->
         </ul>
 
         <div class="bottom-cotent">
           <li class="list">
             <a href="#" class="nav-link">
               <i class="bx bx-cog icon"></i>
-              <span class="link">Settings</span>
+              <span class="link">Configurações</span>
             </a>
           </li>
           <li class="list">
-            <a href="#" class="nav-link">
+            <a href="../index.html" class="nav-link">
               <i class="bx bx-log-out icon"></i>
-              <span class="link">Logout</span>
+              <span class="link">Sair</span>
             </a>
           </li>
         </div>
@@ -94,113 +94,81 @@
     <div class="container-metricas">
       <div class="metricas">
         <p>Total de vezes jogadas</p>
-        <p id="total-jogadas" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+        <p id="total-jogadas" style="font-size:19px; color: #181818; font-weight: 800;">0</p>
       </div>
       <div class="metricas">
         <p>Maior pontuação</p>
-        <p id="maior-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+        <p id="maior-pontuacao" style="font-size:19px; color: #181818; font-weight: 800;">0</p>
       </div>
       <div class="metricas">
         <p>Menor pontuação</p>
-        <p id="menor-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+        <p id="menor-pontuacao" style="font-size:19px; color: #181818; font-weight: 800;">0</p>
       </div>
       <div class="metricas">
         <p>Pontuação Total</p>
-        <p id="total-pontuacao" style="font-size:19px; color: #fff; font-weight: 800;">0</p>
+        <p id="total-pontuacao" style="font-size:19px; color:#181818; font-weight: 800;">0</p>
       </div>
     </div>
     <div class="container-cardUser">
       <div class="cardUser">
         <p>Bem vindo(a) de volta,</p>
-        <p style="font-size: 28px; color: #FFFFFF; font-weight: 900;"><span id="nome_Usuario"></span></p>
-        <p>Prepare-se<br> para alcançar<br> o TOP 1!</p>
+        <p style="font-size: 28px; color:#181818; font-weight: 900;"><span id="nome_Usuario"></span></p>
+        <h5>Prepare-se <br>para alcançar <br>o TOP 1!</h5>
       </div>
       <div class="metricasUser">
-        <p>Cinéfilos cadastrados</p>
-        <span style="font-size: 15px; color: #A0AEC0; font-weight: 200;">no projeto</span>
         <div class="total-container">
           <div class="total-user">
-            <span id="total_usuarios"></span>
+            <p style="  margin-right: 10%; margin-bottom: 2%;">Cinéfilos cadastrados<br>no projeto</p>
+            <span style="  margin-bottom: 10%;
+            " id="total_usuarios"></span>
           </div>
         </div>
       </div>
-      <div class="dashboardTop3">
-        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw; margin-top: 8%;"></canvas>
-      </div>
+    <div class="dashboardTop3">
+  <div class="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
+</div>
     </div>
     <div class="container-ranking">
-      <!-- <div class="ranking">
+      <div class="ranking">
         <p>Ranking de Pontuação</p>
-        <div class="ranking-text">
-          <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Posição</p>
-          <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Usuário</p>
-          <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Pontuação</p>
-          <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Vezes jogadas</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">1º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">2º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">3º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">4º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">5º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-        <div class="ranking-text1">
-          <p style="font-size: 15px; font-weight: 100;">6º</p>
-          <p style="font-size: 15px; font-weight: 100;">Thomas</p>
-          <p style="font-size: 15px; font-weight: 100;">1,200</p>
-          <p style="font-size: 15px; font-weight: 100;">10</p>
-        </div>
-      </div> -->
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Usuário</th>
+              <th>Pontuação</th>
+              <th>Vezes jogadas</th>
+            </tr>
+          </thead>
+          <div class="scrollable-tbody">
+            <tbody id="ranking-body">
+              <!-- Ranking rows will be inserted here by JavaScript -->
+            </tbody>
+          </div>
+        </table>
+      </div>
       <div class="jogos">
         <p>Quizes</p>
-        <p style="font-size: 15px; font-weight: 100;">Jogue agora e teste seus conhecimentos em diferentes areas do
-          cinema</p>
+        <p style="font-size: 15px; font-weight: 100;">Jogue agora e teste seus conhecimentos em diferentes areas do cinema</p>
         <div class="center">
-          <div onclick="irParaQuiz()" class="article-card">
+          <div onclick="irParaQuiz()" style="background-image: url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);background-repeat: no-repeat;background-size: cover;" class="article-card">
             <div class="content">
               <p class="date">Mar 31, 2024</p>
               <p class="title">Conhecimentos Gerais</p>
             </div>
-            <img
-              src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="article-cover" />
           </div>
-          <div onclick="irParaQuizTerror()" class="article-card">
+          <div onclick="irParaQuizTerror()" style="background-image: url(https://i.pinimg.com/564x/c9/cd/e5/c9cde5d0a8514e5c4894fc0c852a9a76.jpg);background-repeat: no-repeat;background-size: cover;" class="article-card">
             <div class="content">
-              <p class="date">Mar 01, 2024</p>
-              <p class="title">Gênero terror</p>
+              <p class="date">Mar 31, 2024</p>
+              <p class="title">Gênero Terror</p>
             </div>
-            <img
-              src="https://images.unsplash.com/photo-1490279881985-a8950e1e932f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="article-cover" />
           </div>
         </div>
       </div>
     </div>
-  </div>
+    
 
   <script>
     const labels = [];
@@ -210,32 +178,74 @@
         label: 'Pontuação',
         data: [65, 59, 80, 81, 56, 55, 40],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)'
+          'rgb(173,10,20, 0.4)',
         ],
         borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)'
+          '#81171B',
         ],
         borderWidth: 1
 
       }]
     };
-
     const config = {
-      type: 'bar',
-      data: data,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      },
-    };
-
+            type: 'bar',
+            data: data,
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Top 3 Pontuações',
+                        font: {
+                            size: 24,
+                            weight: '500'
+                        },
+                        color: 'white' 
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white' 
+                        }
+                    },
+                    tooltip: {
+                        bodyColor: 'white', 
+                        titleColor: 'black',
+                        backgroundColor: 'rgba(174, 146, 132, 0.8)', 
+                        titleFont: {
+                            size: 14, 
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 16, 
+                        },
+                        callbacks: {
+                            labelColor: function(context) {
+                                return {
+                                    borderColor: 'rgba(0, 0, 0, 0.3)',
+                                    backgroundColor: 'white'
+                                };
+                            },
+                            labelTextColor: function() {
+                                return 'black';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white' 
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' 
+                        }
+                    }
+                }
+            }
+        };
+        
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
@@ -446,32 +456,22 @@ function obterRankingPontuacao() {
         }
 
         function atualizarRanking(data) {
-            var containerRanking = document.querySelector(".container-ranking");
-            var rankingHTML = `
-                <div class="ranking">
-                    <p>Ranking de Pontuação</p>
-                    <div class="ranking-text">
-                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Posição</p>
-                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Usuário</p>
-                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Pontuação</p>
-                        <p style="font-size: 15px; font-weight: 100; color: #A0AEC0;">Vezes jogadas</p>
-                    </div>
-            `;
+    var rankingBody = document.getElementById("ranking-body");
+    rankingBody.innerHTML = ""; 
 
-            data.forEach((usuario, index) => {
-                rankingHTML += `
-                    <div class="ranking-text1">
-                        <p style="font-size: 15px; font-weight: 100;">${index + 1}º</p>
-                        <p style="font-size: 15px; font-weight: 100;">${usuario.nome}</p>
-                        <p style="font-size: 15px; font-weight: 100;">${usuario.total_pontuacao}</p>
-                        <p style="font-size: 15px; font-weight: 100;">${usuario.total_jogadas}</p>
-                    </div>
-                `;
-            });
+    data.forEach((usuario, index) => {
+        var row = `
+            <tr>
+                <td>${index + 1}º</td>
+                <td>${usuario.nome}</td>
+                <td>${usuario.total_pontuacao}</td>
+                <td>${usuario.total_jogadas}</td>
+            </tr>
+        `;
+        rankingBody.innerHTML += row;
+    });
+}
 
-            rankingHTML += `</div>`;
-            containerRanking.innerHTML += rankingHTML;
-        }
         
 
         window.onload = function () {

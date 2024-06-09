@@ -36,7 +36,7 @@ function vezesJogadas(usuarioId) {
     console.log("Acessando o método obterTotalJogadas no usuárioModel");
 
     var instrucaoSql = `
-        SELECT COUNT(*) AS total_jogadas
+        SELECT COALESCE(COUNT(*), 0) AS total_jogadas
         FROM resposta
         WHERE fkUsuario = ${usuarioId};
     `;
@@ -44,9 +44,10 @@ function vezesJogadas(usuarioId) {
     return database.executar(instrucaoSql);
 }
 
+
 function obterMaiorPontuacao(usuarioId) {
     var instrucaoSql = `
-        SELECT MAX(pontuacao) AS maior_pontuacao
+        SELECT COALESCE(MAX(pontuacao), 0) AS maior_pontuacao
         FROM resposta
         WHERE fkUsuario = ${usuarioId};
     `;
@@ -56,7 +57,7 @@ function obterMaiorPontuacao(usuarioId) {
 
 function obterMenorPontuacao(usuarioId) {
     var instrucaoSql = `
-        SELECT MIN(pontuacao) AS menor_pontuacao
+        SELECT COALESCE(MIN(pontuacao), 0) AS menor_pontuacao
         FROM resposta
         WHERE fkUsuario = ${usuarioId};
     `;
@@ -66,7 +67,7 @@ function obterMenorPontuacao(usuarioId) {
 function obterTotalPontuacao(usuarioId) {
     console.log("Acessando o método obterTotalPontuacao no modelo do usuário");
     var instrucaoSql = `
-        SELECT SUM(pontuacao) AS total_pontuacao
+        SELECT COALESCE(SUM(pontuacao), 0) AS total_pontuacao
         FROM resposta
         WHERE fkUsuario = ${usuarioId};
     `;
@@ -111,11 +112,12 @@ function contarTotalUsuarios() {
 function obterRankingPontuacao() {
     console.log("Acessando o método obterRankingPontuacao no modelo do usuário");
     var instrucaoSql = `
-    SELECT usuario.nome, SUM(resposta.pontuacao) AS total_pontuacao, COUNT(resposta.idResposta) AS total_jogadas
-    FROM usuario
-    LEFT JOIN resposta ON usuario.id = resposta.fkUsuario
-    GROUP BY usuario.id, usuario.nome
-    ORDER BY total_pontuacao DESC;
+   SELECT usuario.nome, COALESCE(SUM(resposta.pontuacao), 0) AS total_pontuacao, COALESCE(COUNT(resposta.idResposta), 0) AS total_jogadas
+FROM usuario
+LEFT JOIN resposta ON usuario.id = resposta.fkUsuario
+GROUP BY usuario.id, usuario.nome
+ORDER BY total_pontuacao DESC;
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -127,8 +129,7 @@ function cadastrarReview(usuarioId, titulo, descricao) {
         VALUES (${usuarioId}, '${titulo}', '${descricao}', NOW());
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
-
-    return database.executar(instrucaoSql);
+    return database.executar(instrucaoSql)
 }
 
 function obterReviews() {
@@ -151,17 +152,45 @@ ORDER BY r.data_publicacao DESC;
     return database.executar(instrucaoSql);
 }
 
-function obterTodasPontuacoes(usuarioId) {
+function obterTodasPontuacoes(usuarioId, quizId) {
     console.log("Acessando o método obterTodasPontuacoes no modelo do usuário");
     var instrucaoSql = `
         SELECT resposta.pontuacao
         FROM resposta
-        WHERE resposta.fkUsuario = ${usuarioId}
+        WHERE resposta.fkUsuario = ${usuarioId} AND resposta.fkQuiz = ${quizId}
         ORDER BY resposta.idResposta ASC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+// function curtirReview(usuarioId, reviewId) {
+//     var instrucaoSqlUpdate = `
+//         UPDATE review
+//         SET qtd_curtidas = qtd_curtidas + 1
+//         WHERE idReview = ${reviewId};
+//     `;
+//     console.log("Executando a instrução SQL de atualização: \n" + instrucaoSqlUpdate);
+
+//     database.executar(instrucaoSqlUpdate)
+//         .then(() => {
+//             var instrucaoSqlInsert = `
+//                 INSERT INTO curtidas (fkUsuario, fkReview)
+//                 VALUES (${usuarioId}, ${reviewId});
+//             `;
+//             console.log("Executando a instrução SQL de inserção: \n" + instrucaoSqlInsert);
+
+//             return database.executar(instrucaoSqlInsert);
+//         })
+//         .then(() => {
+//             console.log("Curtida registrada com sucesso!");
+//         })
+//         .catch((erro) => {
+//             console.log("Erro ao tentar curtir a review:", erro);
+//             throw erro;
+//         });
+// }
+
 
 
 module.exports = {

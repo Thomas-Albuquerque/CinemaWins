@@ -4,92 +4,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CinemaWins | Histórico de partidas</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <script src="../js/sessao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-image: url('https://mithsd.carrd.co/assets/images/container03.jpg?v=16376974');
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .chart-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 800px;
+            text-align: center; 
+        }
+
+        #myChart {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .select-container {
+            margin-bottom: 20px; 
+        }
+
+        .texto {
+            text-align: center;
+            margin-bottom: 20px; 
+            color: black;
+        }
+
+        .conteudo{
+            margin-top: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 
 <body>
     <nav>
         <div class="logo">
-            <i class="bx bx-menu menu-icon"></i>
-            <span class="logo-name">CinemaWins</span>
+          <i style=" color: #e2e2e2;" class="bx bx-menu menu-icon"></i>
+          <span class="logo-name">CinemaWins</span>
         </div>
         <div class="sidebar">
-            <div class="logo">
-                <i class="bx bx-menu menu-icon"></i>
-                <span class="logo-name">CinemaWins</span>
+          <div class="logo">
+            <i style=" color: #e2e2e2;" class="bx bx-menu menu-icon"></i>
+            <span class="logo-name">CinemaWins</span>
+          </div>
+    
+          <div class="sidebar-content">
+            <ul class="lists">
+              <li class="list">
+                <a href="Dashboard.html" class="nav-link">
+                  <i class="bx bx-home-alt icon"></i>
+                  <span class="link">Dashboard</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="social.html" class="nav-link">
+                  <i class="bx bx-bar-chart-alt-2 icon"></i>
+                  <span class="link">Feed</span>
+                </a>
+              </li>
+              <!-- <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-bell icon"></i>
+                  <span class="link">Notifications</span>
+                </a>
+              </li> -->
+              <!-- <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-message-rounded icon"></i>
+                  <span class="link">Messages</span>
+                </a>
+              </li> -->
+              <li class="list">
+                <a href="historico.html" class="nav-link">
+                  <i class="bx bx-pie-chart-alt-2 icon"></i>
+                  <span class="link">Histórico de partidas</span>
+                </a>
+              </li>
+              <!-- <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-heart icon"></i>
+                  <span class="link">Likes</span>
+                </a>
+              </li> -->
+              <!-- <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-folder-open icon"></i>
+                  <span class="link">Files</span>
+                </a>
+              </li> -->
+            </ul>
+    
+            <div class="bottom-cotent">
+              <li class="list">
+                <a href="#" class="nav-link">
+                  <i class="bx bx-cog icon"></i>
+                  <span class="link">Configurações</span>
+                </a>
+              </li>
+              <li class="list">
+                <a href="../index.html" class="nav-link">
+                  <i class="bx bx-log-out icon"></i>
+                  <span class="link">Sair</span>
+                </a>
+              </li>
             </div>
-
-            <div class="sidebar-content">
-                <ul class="lists">
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-home-alt icon"></i>
-                            <span class="link">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="social.html" class="nav-link">
-                            <i class="bx bx-bar-chart-alt-2 icon"></i>
-                            <span class="link">Feed</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-bell icon"></i>
-                            <span class="link">Notifications</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-message-rounded icon"></i>
-                            <span class="link">Messages</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="historico.html" class="nav-link">
-                            <i class="bx bx-pie-chart-alt-2 icon"></i>
-                            <span class="link">Analytics</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-heart icon"></i>
-                            <span class="link">Likes</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-folder-open icon"></i>
-                            <span class="link">Files</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="bottom-cotent">
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-cog icon"></i>
-                            <span class="link">Settings</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-log-out icon"></i>
-                            <span class="link">Logout</span>
-                        </a>
-                    </li>
-                </div>
-            </div>
+          </div>
         </div>
-    </nav>
+      </nav>
     <section class="overlay"></section>
-    <div class="incial">
-        <div
-            style="display: flex; justify-content: center; align-items: center;height: 50vh; width: 50vw; flex-direction: column; margin-top: 10%;">
+    <div class="conteudo">
+        <div class="texto">
+            <h2>Histórico de Partidas</h2>
+            <h3 style="font-weight: 500; color: rgb(46, 46, 46);">Selecione um quiz para ver o histórico de pontuações</h3>
+        </div>
+    
+        <div class="chart-container">
+            <div class="select-container">
+                <label for="quizSelect">Escolha o quiz: </label>
+                <select id="quizSelect">
+                    <option value="1">Conhecimentos Gerais</option>
+                    <option value="2">Terror</option>
+                </select>
+            </div>
             <canvas id="myChart"></canvas>
         </div>
     </div>
@@ -98,12 +157,12 @@
         let myChart; // Definindo myChart no escopo global
 
         document.addEventListener('DOMContentLoaded', (event) => {
-            const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+            const labels = [];
             const data = {
                 labels: labels,
                 datasets: [{
                     label: 'Pontuação',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: [],
                     fill: false,
                     borderColor: 'rgb(75, 192, 192)',
                     tension: 0.1
@@ -113,6 +172,27 @@
             const config = {
                 type: 'line',
                 data: data,
+                options: {
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: 'white' // Cor dos rótulos do eixo x
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: 'white' // Cor dos rótulos do eixo y
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white' // Cor da legenda
+                            }
+                        }
+                    }
+                }
             };
 
             myChart = new Chart(
@@ -121,46 +201,51 @@
             );
         });
 
-        function obterTodasPontuacoes() {
-            fetch(`/usuarios/obterTodasPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}`, {
+        function obterTodasPontuacoes(quizId) {
+            fetch(`/usuarios/obterTodasPontuacoes?usuarioId=${sessionStorage.getItem('ID_USUARIO')}&quizId=${quizId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
-                .then(function (resposta) {
-                    if (!resposta.ok) {
-                        throw new Error("Erro ao obter todas as pontuações.");
-                    }
-                    return resposta.json();
-                })
-                .then(function (data) {
-                    console.log("Todas as pontuações: ", data);
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Erro ao obter todas as pontuações.");
+                }
+                return resposta.json();
+            })
+            .then(function (data) {
+                console.log("Todas as pontuações: ", data);
 
-                    const labels = [];
-                    const pontuacoes = [];
+                const labels = [];
+                const pontuacoes = [];
 
-                    for (let contadorPartidas = 0; contadorPartidas < data.length; contadorPartidas++) {
-                        const numeroJogo = contadorPartidas + 1;
-                        const pontuacao = parseInt(data[contadorPartidas].pontuacao);
-                        labels.push(`Partida ${numeroJogo}`);
+                for (let contadorPartidas = 0; contadorPartidas < data.length; contadorPartidas++) {
+                    const numeroJogo = contadorPartidas + 1;
+                    const pontuacao = parseInt(data[contadorPartidas].pontuacao);
+                    labels.push(`Partida ${numeroJogo}`);
 
+                    pontuacoes.push(pontuacao);
+                }
 
-                        pontuacoes.push(pontuacao);
-                    }
+                myChart.data.labels = labels;
+                myChart.data.datasets[0].data = pontuacoes;
 
-                    myChart.data.labels = labels;
-                    myChart.data.datasets[0].data = pontuacoes;
-
-                    myChart.update();
-                })
-                .catch(function (erro) {
-                    console.error("Erro ao obter todas as pontuações: ", erro);
-                });
+                myChart.update();
+            })
+            .catch(function (erro) {
+                console.error("Erro ao obter todas as pontuações: ", erro);
+            });
         }
 
+        document.getElementById('quizSelect').addEventListener('change', function () {
+            const quizId = this.value;
+            obterTodasPontuacoes(quizId);
+        });
+
         window.onload = function () {
-            obterTodasPontuacoes();
+            const quizId = document.getElementById('quizSelect').value;
+            obterTodasPontuacoes(quizId);
         };
     </script>
 </body>

@@ -11,6 +11,7 @@ body {
   min-height: 100%;
   background: #e3f2fd;
   overflow-x: hidden;
+  
 }
 nav {
   position: fixed;
@@ -20,7 +21,8 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #fff;
+  background-image: url(https://mithsd.carrd.co/assets/images/container01.jpg?v=16376974);
+  background-size: cover;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
@@ -36,7 +38,7 @@ nav .logo {
   cursor: pointer;
 }
 .logo .logo-name {
-  color: #333;
+  color: #e2e2e2;
   font-size: 22px;
   font-weight: 500;
 }
@@ -47,7 +49,8 @@ nav .sidebar {
   height: 100%;
   width: 260px;
   padding: 20px 0;
-  background-color: #fff;
+  background-image: url(https://mithsd.carrd.co/assets/images/container01.jpg?v=16376974);
+  background-size: cover;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
 }
@@ -73,7 +76,7 @@ nav.open .sidebar {
   text-decoration: none;
 }
 .lists .nav-link:hover {
-  background-color: #4070f4;
+  background-color: rgba(153, 125, 110, 0.8);
 }
 .nav-link .icon {
   margin-right: 14px;
@@ -115,19 +118,23 @@ nav.open ~ .overlay {
     gap: 20px;
 }
 
-.metricas{
+.metricas {
   width: 270px;
   height: 58px;
-  background-color: #707070;
-  border-radius: 20px;
-  justify-content:flex-start;
+  background-image: url("../img/botao.webp");
+  background-repeat: no-repeat;
+  justify-content: flex-start;
   text-align: left;
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
+.metricas:hover {
+  transform: translateY(-5px);
+}
 .metricas p{
   margin-left: 18px;
   margin-top: 2px;
@@ -144,9 +151,9 @@ nav.open ~ .overlay {
 .container-cardUser{
    display: flex;
    justify-content: flex-start;
-   align-items: flex-start;
-   margin-left: 7%;
-   margin-top: 30.5px;
+   align-items: flex-end;
+   margin-left: 4%;
+   margin-top: 1%;
    flex-direction: row;
    gap:28px
 }
@@ -154,115 +161,172 @@ nav.open ~ .overlay {
 .cardUser{
     width: 416px;
     height: 209px;
-    background-color: #333;
-    border-radius: 20px;
+    background-image: url('../img/card.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     justify-content:flex-start;
     text-align: left;
     display: flex;
     align-items:flex-start;
     flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.cardUser:hover {
+  transform: translateY(-10px);
 }
 
 .cardUser p{
   font-size: 15px;
-  color: #A0AEC0;
-  margin-left: 20px;
-  margin-top: 12px;
+  color:#2c2c2c;;
+  margin-left: 16%;
+  margin-top: 8%;
 }
 
-.metricasUser{
-    width: 280px;
-    height: 275px;
-    background-color: #333;
-    border-radius: 20px;
-    justify-content:flex-start;
-    text-align: left;
-    display: flex;
-    align-items:flex-start;
-    flex-direction: column;
-    column-gap: -8px;
-
-}
-.metricasUser p{
-  font-size: 18px;
-  color: #FFFFFF;
+.cardUser h5{
+  font-size: 15px;
+  color:#2c2c2c;;
+  margin-left: 16%;
   font-weight: 500;
-  margin-left: 20px;
-  margin-top: 12px;
 }
 
-.metricasUser span{
-  font-size: 18px;
-  color: #FFFFFF;
-  font-weight: 500;
-  margin-left: 20px;
+.metricasUser {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  border-radius: 20px;
+  overflow: hidden;
 }
+
+.metricasUser::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/filmRoll.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.5);
+} 
+
 .total-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top: 130px;
-}
-.total-user{
-  width: 254px;
-  height: 71px;
-  background-color: #060B28;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 19%;
 }
 
-.total-user span{
+.total-user {
+  width: 250px;
+  height: 250px;
+  background-color: rgba(0, 0, 0);
+  display: flex;
+  color: #c4c4c4;
+  justify-content: center;
+  align-items: center; 
+  margin-right: 10%;
+  flex-direction: column; 
+  text-align: center;
+  padding-bottom: 10%;
+}
+
+.total-user span {
   font-size: 24px;
-  margin-right: 20px;
+  color: #FFFFFF;
+  font-weight: 500; 
+  margin-right: 10%;
 }
 
 .dashboardTop3{
     width: 400px;
-    height: 272px;
-    background-color: #333;
-    border-radius: 20px;
+    height: 209px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.container-ranking{
+.chart-container {
+  width: 100%;
+}
+
+.container-ranking {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-left: 7%;
-  flex-direction: row;
-  gap:28px;
-  margin-bottom: 41%;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: row;
+    gap: 28px;
+    margin-left: 5%;
+    margin-right: 5%;
+    align-content: center;
 }
 
-.ranking{
+.ranking {
+  flex: 1; 
+  margin-top: 20px;
+}
 
-  width: 421px;
-  height: 366px;
-  background-color: #333;
+.ranking p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color:rgba(0, 0, 0, 0.7);;
   border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.jogos{
-  width: 708px;
-  height: 287px;
-  background-color: #333;
+.ranking-table th, .ranking-table td {
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  color: #bebebe;
+}
+
+.ranking-table th {
+  background-color:rgba(20, 20, 20, 0.7);  font-weight: 600;
+}
+
+.ranking-table tr:nth-child(even) {
+  background-color:rgba(31, 31, 31, 0.7);}
+
+.ranking-table tr:hover {
+  background-color:rgba(0, 0, 0, 0.7);}
+
+.ranking-table th, .ranking-table td:first-child {
+  text-align: center;
+}
+
+
+.jogos {
+  flex: 1; 
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
-  margin-top: 6.5%;
+  padding: 10px; 
+  box-sizing: border-box;
 }
 
-.jogos p{
+
+.jogos p {
   font-size: 18px;
   color: #FFFFFF;
   font-weight: 500;
-  margin-left: 20px;
-  margin-top: 12px;
+  margin: 12px 20px 0;
 }
 
 .ranking p{
   font-size: 18px;
-  color: #FFFFFF;
+  color: #0e0e0e;
   font-weight: 500;
   margin-top: 4%;
   margin-left: 20px;
@@ -348,6 +412,7 @@ nav.open ~ .overlay {
   flex-direction: row;
   margin-top: 7%;
   margin-left: 2.5%;
+  margin-right: 2.5%;
   gap: 75%;
 }
 
@@ -399,9 +464,12 @@ nav.open ~ .overlay {
 .icon-user {
   width: 30px;
   height: 30px;
-  border-radius: 100%;
-  background-color: #c4c4c4;
-  margin-bottom: 5px;
+  border-radius: 50%;
+  background-color: #a1a1a1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(32, 32, 32); 
 }
 
 .filmCard p {
@@ -512,6 +580,7 @@ a {
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(#000, 0.25);
+  z-index: 1;
 }
 
 .modal-container {
@@ -736,8 +805,32 @@ a {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Estilo para o ícone após a mudança */
 .curtida {
-  color: red; /* Ajuste a cor conforme necessário */
+  color: red; 
   transform: scale(1.2);
+}
+
+
+.button1 {
+  pointer-events: auto;
+  cursor: pointer;
+  background: #3C150A;
+  color: #e3f2fd;
+  border: none;
+  margin: 0;
+  width: 250px;
+  height: 50px;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  }
+
+.button1:hover {
+  background: #693021;
+}
+
+.button1 .icon {
+  margin-right: 5px;
 }

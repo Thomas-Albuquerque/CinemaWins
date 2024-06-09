@@ -314,17 +314,24 @@ function obterReviews(req, res) {
 
 function obterTodasPontuacoes(req, res) {
     var usuarioId = req.query.usuarioId;
+    var quizId = req.query.quizId;
 
     if (usuarioId == undefined) {
         res.status(400).send("O ID do usuário está indefinido.");
         return;
     }
-    usuarioModel.obterTodasPontuacoes(usuarioId)
+
+    if (quizId == undefined) {
+        res.status(400).send("O ID do quiz está indefinido.");
+        return;
+    }
+
+    usuarioModel.obterTodasPontuacoes(usuarioId, quizId)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.json(resultado);
             } else {
-                res.status(404).send("Nenhuma pontuação encontrada para este usuário.");
+                res.status(404).send("Nenhuma pontuação encontrada para este usuário e quiz.");
             }
         })
         .catch(function (erro) {
@@ -332,6 +339,25 @@ function obterTodasPontuacoes(req, res) {
             res.status(500).json({ error: "Erro interno do servidor" });
         });
 }
+// function curtirReview(req, res) {
+//     var reviewId = req.body.reviewId;
+//     var usuarioId = req.body.usuarioId;
+
+//     if (!reviewId || !usuarioId) {
+//         res.status(400).json({ erro: "O ID da review ou do usuário não foi fornecido." });
+//         return;
+//     }
+//     usuarioModel.curtirReview(usuarioId, reviewId)
+//         .then(function () {
+//             res.status(200).json({ mensagem: "Cor da curtida atualizada com sucesso!" });
+//         })
+//         .catch(function (erro) {
+//             console.log(erro);
+//             res.status(500).json({ erro: "Erro interno do servidor ao atualizar a cor da curtida da review" });
+//         });
+// }
+
+
 
 
 module.exports = {

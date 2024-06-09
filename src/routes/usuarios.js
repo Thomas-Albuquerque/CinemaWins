@@ -61,4 +61,8 @@ router.get('/obterTodasPontuacoes', function(req, res) {
 });
 
 
+// router.post('/curtirReview', function(req, res) {
+//     usuarioController.curtirReview(req, res);
+// });
+
 module.exports = router;
