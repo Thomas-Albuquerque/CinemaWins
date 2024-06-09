@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style/estilo.css" />
+    <title>CinemaWins | Sobre Mim</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+        }
+        .about-me {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+            background-color: #fff4e6;
+            border: 2px solid #d4a373;
+            margin: 50px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-pic {
+            flex: 1;
+            text-align: center;
+        }
+        .profile-pic img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #d4a373;
+        }
+        .profile-text {
+            flex: 2;
+            padding-left: 30px;
+            font-size: 18px;
+            color: #4a4a4a;
+        }
+        .retro-heading {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            color: #d46a6a;
+        }
+        .retro-paragraph {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body onscroll="scrollHeader()">
+    <div id="home" class="inicial">
+        <nav id="nav">
+            <ul>
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#lancamento">Lançamentos</a></li>
+                <li><a class="nav-link" href="#cinema">Cinema</a></li>
+             </ul>
+
+            <div class="logo">
+                <img src="img/logoNavbar.svg" alt="Logotipo">
+            </div>
+            <ul>
+                <li><a class="nav-link" href="#projeto">Projeto</a></li>
+                <li><a class="nav-link" href="#contato">Contato</a></li>
+                <li><a class="nav-link" href="#about-me">Sobre Mim</a></li>
+            </ul>
+        </nav>
+
+       
+            <div class="profile-pic">
+                <img src="img/profile.jpg" alt="Foto de Perfil">
+            </div>
+            <div class="profile-text">
+                <h2 class="retro-heading">Sobre Mim</h2>
+                <p class="retro-paragraph">
+                    Olá! Meu nome é Thomas da Silva Albuquerque. Sou apaixonado por cinema desde criança e decidi transformar essa paixão em um projeto de vida. 
+                    No CinemaWins, compartilho minha visão sobre filmes, suas histórias e o impacto que eles têm na nossa cultura e sociedade. 
+                    Espero que você encontre inspiração e diversão em cada análise e recomendação que faço. Bem-vindo ao meu mundo cinematográfico!
+                </p>
+
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function scrollHeader() {
+            nav.classList.toggle('headerblock', scrollY > 0);
+        }
+    </script>
+</body>
+</html>
