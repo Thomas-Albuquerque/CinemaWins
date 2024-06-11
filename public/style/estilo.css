@@ -64,16 +64,22 @@ nav ul {
     padding-inline: 30px;
     list-style: none; 
     position: relative; 
-   
 }
 .nav-link {
+    text-decoration: none;
+    color: #1b1411;
+}
+
+.nav-link1 {
     text-decoration: none;
     color: #1b1411;
 }
 nav ul li {
     margin-right: 60px;
     color:inherit;
-    text-decoration:none;
+    list-style: none !important;
+    text-decoration: none !important;
+    color: #1b1411 !important;
 }
 
 .tituloPrincipal {
@@ -83,8 +89,8 @@ nav ul li {
     text-align: center;
     justify-content: center;
     font-family: 'Linden Hill', serif;
-    font-size: 60px;
-    margin-top: 66px;
+    font-size: 50px;
+    margin-top:90px;
     color: #1E1D19;
 }
 
@@ -168,13 +174,14 @@ nav ul li {
 }
 
 .subtitulo1 {
+    width: 50%;
     display: flex;
     word-wrap: break-word;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
+    align-items: flex-start;
+    text-align:left;
+    justify-content: flex-start;
     font-family: 'Roboto', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     color: #1E1D19;
     margin-top: 20px;
     opacity: 0.9;
@@ -356,7 +363,26 @@ p {
     width: 150px;
     height: 150px;
     border-radius: 100%;
-    background-color: #D3C59F;
+    background-image: url(https://eloapoio.org.br/wp-content/uploads/2021/08/ODS-4-EDUCACAO-DE-QUALIDADE-1024x1024.png);
+    background-size: cover;
+}
+
+.icon2 {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-image: url(https://static.vecteezy.com/system/resources/previews/018/766/186/non_2x/quiz-guess-social-media-icon-in-flat-style-faq-illustration-on-isolated-background-help-button-sign-business-concept-vector.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.icon3 {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-image: url(https://icons.veryicon.com/png/o/miscellaneous/sk-common-simple-linear-icon/ranking-11.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .text-container {
@@ -849,3 +875,19 @@ margin-bottom: -30px;
     color: #000000 !important;
   }
 
+  .film-info {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #181818;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.swiper-slide.selected .film-info {
+    display: block;
+}

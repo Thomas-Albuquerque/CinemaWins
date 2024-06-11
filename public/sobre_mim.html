@@ -11,59 +11,15 @@
     <title>CinemaWins | Sobre Mim</title>
     <style>
         body {
-            font-family: 'Courier New', Courier, monospace;
             background-color: #f4f4f4;
             margin: 0;
             overflow-x: hidden;
         }
 
-        .about-me {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px;
-            background-color: #fff4e6;
-            border: 2px solid #d4a373;
-            margin: 50px 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-pic {
-            flex: 1;
-            text-align: center;
-        }
-
-        .profile-pic img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 3px solid #d4a373;
-        }
-
-        .profile-text {
-            flex: 2;
-            padding-left: 30px;
-            font-size: 18px;
-            color: #4a4a4a;
-        }
-
-        .retro-heading {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 24px;
-            color: #d46a6a;
-        }
-
-        .retro-paragraph {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 18px;
-            color: #333;
-            line-height: 1.6;
-        }
-
         .inicial1 {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             padding-top: 40px;
             position: relative;
@@ -72,16 +28,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-image: url(../img/sobreMim.png);
-        }
-
-        .textos {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-direction: column;
-            margin-bottom: 31%; 
-            margin-left: 30%;
+            background-image: url(../public/img/sobreMim.png);
         }
 
         .title {
@@ -89,18 +36,37 @@
             font-size: 50px;
             color: #1E1D19;
             font-weight: 500;
-            text-align: left;
-            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .subtitulo {
+        .textos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 5%;
+        }
+
+        .subtitulo1,
+        .textobaixo {
+            width: 70%;
+            max-width: 600px;
+            text-align: justify;
             font-family: 'Roboto', sans-serif;
             font-size: 20px;
             color: #1E1D19;
-            font-weight: 500;
-            text-align: left;
-            word-wrap: break-word;
+            opacity: 0.9;
         }
+
+        .textobaixo{
+            width: 30%;
+        }
+
+        .subtitulo1 {
+            margin-bottom: 20px;
+        }
+
+
     </style>
 </head>
 
@@ -108,45 +74,34 @@
     <div id="home" class="inicial1">
         <nav id="nav">
             <ul>
-                <li><a  href="index.html">Home</a></li>
-                <li><a  href="index.html">Lançamentos</a></li>
-                <li><a  href="index.html">Cinema</a></li>
-            </ul>
+                <li><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="index.html">Lançamentos</a></li>
+                <li><a class="nav-link" href="index.html">Cinema</a></li>
+             </ul>
 
             <div class="logo">
-                <img src="img/logoNavbar.svg" alt="Logotipo">
+                <img src="img/logoNavbar.svg" alt="Logotipo" >
             </div>
             <ul>
-                <li><a href="index.html">Projeto</a></li>
-                <li><a  href="index.html">Contato</a></li>
-                <li><a  href="#sobreMim">Sobre Mim</a></li>
+                <li><a class="nav-link" href="index.html">Projeto</a></li>
+                <li><a class="nav-link" href="index.html">Contato</a></li>
+                <li><a class="nav-link" href="sobre_mim.html">Sobre Mim</a></li>
             </ul>
         </nav>
         <div class="textos">
             <h1 class="title">SOBRE MIM</h1>
-            <p class="subtitulo">
-                coisas beadbaibcabeufhcorwvowanr0v bciwusbcubesocvurbevbbbbdab fivfib
-                aiwcbervjjahshhdhsjdjdkkfjsjjdjffj  
-                meowmeowmoemwomeowmeowmeowmemwmeomowmeo
-                meowmeowmoemwemwomemwormwomwmemowmmwormworme
-            </p>
+            <span class="subtitulo1">
+                Me chamo Thomas, nasci em 2005 e sempre fui apaixonado por arte. Desde criança, adorava criar histórias,
+                assistir filmes e desenhar, o que facilitava minha expressão. Aos 13 anos, me tornei obcecado por
+                filmes, vivendo intensamente as emoções que eles me proporcionavam no cinema.
+            </span>
+        </div>
+        <div class="textobaixo">
+            <p style="margin-bottom: 70px;">Espero que este site transmita meu amor e interesse pela arte para outros. Foi criado com muito esforço e carinho, na esperança de inspirar outros a compartilharem desse mesmo entusiasmo!</p>
         </div>
     </div>
 
     <script>
-        document.querySelectorAll('a.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth'
-                });
-            });
-        });
 
         function scrollHeader() {
             const nav = document.getElementById('nav');

@@ -46,6 +46,12 @@ CONSTRAINT fkUsuarioCurtida FOREIGN KEY (fkUsuario) REFERENCES usuario(id),
 CONSTRAINT fkReviewCurtida FOREIGN KEY (fkReview) REFERENCES review(idReview)
 );
 
+INSERT INTO quiz VALUES 
+(1, 'Conhecimentos Gerais');
+
+INSERT INTO quiz VALUES 
+(2, ' Terror');
+
 SELECT * FROM usuario;
 
 SELECT * FROM review;
@@ -56,12 +62,6 @@ SELECT usuario.nome  AS nome_Usuario
         FROM usuario WHERE id = 2;
 
 SELECT * FROM resposta;
-
-INSERT INTO quiz VALUES 
-(1, 'Conhecimentos Gerais');
-
-INSERT INTO quiz VALUES 
-(2, ' Terror');
 
 SELECT * FROM usuario JOIN resposta ON fkUsuario = id;
 
@@ -90,8 +90,6 @@ FROM usuario
 JOIN resposta ON usuario.id = resposta.fkUsuario
 GROUP BY usuario.id, usuario.nome, usuario.email
 ORDER BY total_pontuacao DESC;
-
-
 
 
 SELECT * FROM curtidas;
