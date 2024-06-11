@@ -339,26 +339,58 @@ function obterTodasPontuacoes(req, res) {
             res.status(500).json({ error: "Erro interno do servidor" });
         });
 }
-// function curtirReview(req, res) {
-//     var reviewId = req.body.reviewId;
-//     var usuarioId = req.body.usuarioId;
 
-//     if (!reviewId || !usuarioId) {
-//         res.status(400).json({ erro: "O ID da review ou do usuário não foi fornecido." });
-//         return;
-//     }
-//     usuarioModel.curtirReview(usuarioId, reviewId)
-//         .then(function () {
-//             res.status(200).json({ mensagem: "Cor da curtida atualizada com sucesso!" });
-//         })
-//         .catch(function (erro) {
-//             console.log(erro);
-//             res.status(500).json({ erro: "Erro interno do servidor ao atualizar a cor da curtida da review" });
-//         });
-// }
+function verificarCurtida(req, res) {
+    var reviewId = req.query.reviewId;
+    var usuarioId = req.query.userId;
 
+    if (reviewId == undefined) {
+        res.status(400).send("O ID da review está indefinido.");
+        return;
+    }
 
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+        return;
+    }
 
+    usuarioModel.verificarCurtida(reviewId, usuarioId)
+        .then(function (resultado) {
+            if (resultado) {
+                res.json(resultado);
+            } else {
+                res.status(404).send("Curtida não encontrada.");
+            }
+        })
+        .catch(function (erro) {
+            console.error("Erro ao verificar curtida:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
+
+function toggleCurtida(req, res) {
+    var reviewId = req.body.reviewId;
+    var usuarioId = req.body.userId;
+
+    if (reviewId == undefined) {
+        res.status(400).send("O ID da review está indefinido.");
+        return;
+    }
+
+    if (usuarioId == undefined) {
+        res.status(400).send("O ID do usuário está indefinido.");
+        return;
+    }
+
+    usuarioModel.toggleCurtida(reviewId, usuarioId)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.error("Erro ao alternar curtida:", erro);
+            res.status(500).json({ error: "Erro interno do servidor" });
+        });
+}
 
 module.exports = {
     autenticar,
@@ -374,7 +406,9 @@ module.exports = {
     obterRankingPontuacao,
     cadastrarReview,
     obterReviews,
-    obterTodasPontuacoes
+    obterTodasPontuacoes,
+    verificarCurtida,
+    toggleCurtida
 };
 
 

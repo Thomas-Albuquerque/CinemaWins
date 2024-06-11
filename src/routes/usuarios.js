@@ -61,8 +61,12 @@ router.get('/obterTodasPontuacoes', function(req, res) {
 });
 
 
-// router.post('/curtirReview', function(req, res) {
-//     usuarioController.curtirReview(req, res);
-// });
+router.get('/verificarCurtida', function(req, res) {
+    usuarioController.verificarCurtida(req, res);
+});
+
+router.post('/toggleCurtida', function(req, res) {
+    usuarioController.toggleCurtida(req, res);
+});
 
 module.exports = router;

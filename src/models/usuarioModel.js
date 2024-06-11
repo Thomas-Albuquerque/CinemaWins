@@ -140,17 +140,16 @@ function obterReviews() {
     DATE_FORMAT(r.data_publicacao, '%d/%m/%Y %H:%i:%s') AS data_publicacao_formatada,
     r.titulo,
     r.descricao,
-    r.qtd_curtidas
+    (SELECT COUNT(*) FROM curtidas WHERE fkReview = r.idReview) AS total_curtidas
 FROM review r
 INNER JOIN usuario u ON r.fkUsuario = u.id
 ORDER BY r.data_publicacao DESC;
-
-
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
     return database.executar(instrucaoSql);
 }
+
 
 function obterTodasPontuacoes(usuarioId, quizId) {
     console.log("Acessando o método obterTodasPontuacoes no modelo do usuário");
@@ -164,34 +163,86 @@ function obterTodasPontuacoes(usuarioId, quizId) {
     return database.executar(instrucaoSql);
 }
 
-// function curtirReview(usuarioId, reviewId) {
-//     var instrucaoSqlUpdate = `
-//         UPDATE review
-//         SET qtd_curtidas = qtd_curtidas + 1
-//         WHERE idReview = ${reviewId};
-//     `;
-//     console.log("Executando a instrução SQL de atualização: \n" + instrucaoSqlUpdate);
+function verificarCurtida(reviewId, usuarioId) {
+    console.log("Acessando o método verificarCurtida no modelo do usuário");
+    
+    var instrucaoSql = `
+        SELECT COUNT(*) AS curtiu
+        FROM curtidas
+        WHERE fkReview = ${reviewId} AND fkUsuario = ${usuarioId};
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql).then(results => {
+        const curtiu = results[0].curtiu > 0;
 
-//     database.executar(instrucaoSqlUpdate)
-//         .then(() => {
-//             var instrucaoSqlInsert = `
-//                 INSERT INTO curtidas (fkUsuario, fkReview)
-//                 VALUES (${usuarioId}, ${reviewId});
-//             `;
-//             console.log("Executando a instrução SQL de inserção: \n" + instrucaoSqlInsert);
+        var totalCurtidasSql = `
+            SELECT COUNT(*) AS totalCurtidas
+            FROM curtidas
+            WHERE fkReview = ${reviewId};
+        `;
 
-//             return database.executar(instrucaoSqlInsert);
-//         })
-//         .then(() => {
-//             console.log("Curtida registrada com sucesso!");
-//         })
-//         .catch((erro) => {
-//             console.log("Erro ao tentar curtir a review:", erro);
-//             throw erro;
-//         });
-// }
+        console.log("Executando a instrução SQL: \n" + totalCurtidasSql);
+        return database.executar(totalCurtidasSql).then(totalResults => {
+            const totalCurtidas = totalResults[0].totalCurtidas;
+            return { curtiu, totalCurtidas };
+        });
+    });
+}
 
+function toggleCurtida(reviewId, usuarioId) {
+    console.log("Acessando o método toggleCurtida no modelo do usuário");
 
+    var verificarSql = `
+        SELECT COUNT(*) AS curtiu
+        FROM curtidas
+        WHERE fkReview = ${reviewId} AND fkUsuario = ${usuarioId};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + verificarSql);
+    return database.executar(verificarSql).then(results => {
+        const curtiu = results[0].curtiu > 0;
+
+        if (curtiu) {
+            var deleteSql = `
+                DELETE FROM curtidas
+                WHERE fkReview = ${reviewId} AND fkUsuario = ${usuarioId};
+            `;
+
+            console.log("Executando a instrução SQL: \n" + deleteSql);
+            return database.executar(deleteSql).then(() => {
+                return atualizarTotalCurtidas(reviewId).then(totalCurtidas => {
+                    return { curtiu: false, totalCurtidas };
+                });
+            });
+        } else {
+            var insertSql = `
+                INSERT INTO curtidas (fkReview, fkUsuario)
+                VALUES (${reviewId}, ${usuarioId});
+            `;
+
+            console.log("Executando a instrução SQL: \n" + insertSql);
+            return database.executar(insertSql).then(() => {
+                return atualizarTotalCurtidas(reviewId).then(totalCurtidas => {
+                    return { curtiu: true, totalCurtidas };
+                });
+            });
+        }
+    });
+}
+
+function atualizarTotalCurtidas(reviewId) {
+    var totalCurtidasSql = `
+        SELECT COUNT(*) AS totalCurtidas
+        FROM curtidas
+        WHERE fkReview = ${reviewId};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + totalCurtidasSql);
+    return database.executar(totalCurtidasSql).then(results => {
+        return results[0].totalCurtidas;
+    });
+}
 
 module.exports = {
     autenticar,
@@ -207,5 +258,8 @@ module.exports = {
     obterRankingPontuacao,
     cadastrarReview,
     obterReviews,
-    obterTodasPontuacoes
+    obterTodasPontuacoes,
+    verificarCurtida,
+    toggleCurtida,
+    atualizarTotalCurtidas
 };
