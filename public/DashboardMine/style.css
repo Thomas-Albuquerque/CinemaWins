@@ -254,13 +254,15 @@ nav.open ~ .overlay {
 
 .container-ranking {
   display: flex;
-    justify-content: space-between;
     align-items: flex-end;
     flex-direction: row;
     gap: 28px;
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: 5%;
     align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .ranking {
