@@ -322,6 +322,7 @@ p {
 
 /*Inicio da página Sobre o projeto*/
 .img-titulo {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -334,6 +335,7 @@ p {
     font-family: 'Linden Hill', serif;
     font-size: 60px;
     margin:0 128px;
+    text-align: center;
     color: #1E1D19;
 }
 .take,
